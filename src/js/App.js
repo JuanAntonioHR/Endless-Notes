@@ -1,17 +1,21 @@
 import React from "react";
+import Index from "./views/Index";
+import Login from "./views/Login";
+
+import {
+    HashRouter as Router,
+    Routes,
+    Route
+} from "react-router-dom";
 
 export default function App() {
-    const title = "Endless Notes";
-    const enhancedTitle = title + ' - React App!';
-
-    const sendNotification = () => {
-        electron.notificationApi.sendNotification('My notification');
-    }
-
+    
     return (
-        <>
-            <h1>{enhancedTitle}</h1>
-            <button onClick={sendNotification}>Send notification</button>
-        </>
-    );
+        <Router>
+            <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        </Router>
+    )
 }
