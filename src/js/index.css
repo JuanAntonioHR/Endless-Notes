@@ -1,0 +1,21 @@
+:root {
+    --white: #fefefe;
+    --black: #030303;
+    --gray: #f6f6f6;
+    --solid-gray: #afafaf;
+
+    --purple: #9284ec;
+    --light-purple: #dedef0;
+    --orange: #e8c6b7;
+    --green: #b4dada;
+    --yellow: #ece1b9;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
