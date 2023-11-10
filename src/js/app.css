@@ -1,3 +1,17 @@
-.screen{
-    
+@font-face {
+    font-family: Sora;
+    src: url('../../assets/fonts/Sora-Regular.woff2') format('woff2'),
+        url('../../assets/fonts/Sora-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Pangolin;
+    src: url('../../assets/fonts/Pangolin-Regular.woff2') format('woff2'),
+        url('../../assets/fonts/Pangolin-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }

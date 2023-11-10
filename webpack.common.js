@@ -30,17 +30,38 @@ module.exports = {
           'style-loader',
           // Translates CSS into CommonJS
           'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'autoprefixer'
+                ]
+              }
+            }
+          }
         ],
       },
       {
-        test: /\.svg$/,
+        test: /\.(svg|png)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[path][name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ttf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192, // files smaller than 8kb will be converted to dataURLs
+              name: '[path][name].[ext]',
+              outputPath: 'fonts/', // the fonts will be put in this directory
             },
           },
         ],
