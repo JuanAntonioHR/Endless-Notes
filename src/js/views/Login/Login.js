@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import footBanner from '../../../../assets/images/foot_banner.svg';
-import icon from '../../../../assets/images/endless-notes-icon.png'
+import icon from '../../../../assets/images/endless-notes-icon.png';
 import './login.css';
 
 export default function Login() {

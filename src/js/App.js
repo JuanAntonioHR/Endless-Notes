@@ -4,6 +4,7 @@ import React from "react";
 import Index from "./views/Index/Index";
 import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
+import Home from "./views/Home/Home";
 
 // Router
 import {
@@ -23,6 +24,7 @@ export default function App() {
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/home" element={<Home />} />
             </Routes>
         </Router>
     )

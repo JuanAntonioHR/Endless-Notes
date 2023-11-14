@@ -1,0 +1,322 @@
+.header-section, .board-section{
+    display: flex;
+    width: 100%;
+}
+
+.icon-container{
+    width: 20%;
+    padding-top: calc(1rem * 0.5);
+    text-align: center;
+}
+
+.icon-container img{
+    width: 7rem
+}
+
+.navigation-container-top{
+    padding-top: calc(1rem * 0.5);
+    padding-bottom: calc(1rem * 0.2);
+    padding-right: 1rem;
+    display: flex;
+    justify-content: right;
+}
+
+.user-info-container {
+    display: flex;
+    width: fit-content;
+    padding: calc(1rem * 0.3) calc(1rem * 1.5);
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 44px;
+    border: 3px solid var(--black);
+    box-shadow: 3px 5px 0px 0px var(--black);
+}
+
+.user-info-name p span{
+    font-weight: 800;
+}
+
+.user-info-avatar{
+    display: flex;
+    justify-content: center;
+}
+
+.user-info-avatar img{
+    width: 2rem;
+}
+
+.navbar, .navbar-section, .navigation-container{
+    width: 100%;
+    font-family: Roboto;
+    font-size: calc(1rem * 0.9);
+}
+
+.navbar-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-extension img{
+    width: 2rem;
+    transform: translate(1px);
+}
+
+.navbar ul{
+    list-style-type: none;
+    overflow: hidden;
+    background-color: var(--black);
+}
+
+.navbar li{
+    float: right;
+}
+
+.navbar-item{
+    color: white;
+    text-decoration: none;
+    padding: calc(1rem * 0.7);
+    display: block;
+    text-align: center;
+}
+
+.navbar-item:hover{
+    background-color: var(--solid-gray);
+    color: var(--black);
+}
+
+/* Main container */
+
+.board-section{
+    height: 100%;
+    margin-top: calc(1rem * 0.5);
+    margin-bottom: 2rem;
+    padding: 1rem 0px;
+    background-color: var(--gray);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    font-family: Sora;
+}
+
+/* New note */
+
+.new-note-section{
+    width: 20%;
+    padding: 0px 1rem;
+    align-items: center;
+}
+
+.new-note-container{
+    height: 100%;
+}
+
+.new-note-title{
+    width: 100%;
+    margin-bottom: calc(1rem * 0.5);
+    text-align: center;
+}
+
+.new-note-title h1{
+    font-size: calc(1rem * 1.2);
+    font-weight: 600;
+}
+
+.new-note-card{
+    height: 93%;
+    border-radius: 10px;
+    border-bottom: 6px dashed #000;
+    background-color: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    font-size: calc(1rem * 0.8);
+}
+
+.input-title{
+    padding-top: calc(1rem * 0.7);
+    text-align: center;
+}
+
+.input-title input{
+    width: 90%;
+    height: 2rem;
+}
+
+.note-date-inputs{
+    display: flex;
+    justify-content: space-around;
+    padding: calc(1rem * 0.5);
+}
+
+.note-button, .new-note-title, note-text, note-time, note-date, note-date-inputs{
+    text-align: center;
+}
+
+.note-date input, .note-time input, .input-title input, .note-text textarea{
+    padding: calc(1rem * 0.5);
+    border-radius: 5px;
+    background-color: var(--gray);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.note-date input, .note-time input{
+    height: 2rem;
+    width: 5rem;
+}
+
+.note-text{
+    height: 60%;
+    text-align: center;
+}
+
+.note-text textarea{
+    height: 100%;
+    width: 90%;
+    resize: none;
+}
+
+.note-text p{
+    margin-top: calc(1rem * 0.5);
+}
+
+.note-button{
+    margin-top: calc(1rem * 3);
+}
+
+.note-button button{
+    width: 90%;
+    height: 2rem;
+    color: var(--white);
+    border-radius: 51.448px;
+    background-color: var(--black);
+}
+
+.note-date input:hover, .note-time input:hover, .note-button button:hover{
+    cursor: pointer;
+}
+
+/* Board */
+
+.notes-section{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    margin-right: 1rem;
+    border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.notes-container{
+    width: 100%;
+    padding: 0px 1rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.notes-container-title h1{
+    font-size: calc(1rem * 1.3);
+    font-weight: 600;
+}
+
+.notes-card-container, .next-notes-section{
+    height: 100%;
+    margin: 10px auto;
+    padding: calc(1rem * 0.1) calc(1rem * 0.3);
+    background-color: var(--orange);
+}
+
+.notes-card{
+    height: 11rem;
+    padding: calc(1rem * 0.7) 0px;
+    margin: 1rem 0px;
+    border-radius: 20px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.notes-time p{
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration-line: underline;
+}
+
+.notes-title p{
+    text-decoration-line: underline;
+}
+
+.notes-button{
+    margin-top: calc(1rem * 0.5);
+}
+
+.notes-button button{
+    width: 10rem;
+    height: calc(1rem * 1.4);
+    color: var(--white);
+    font-size: calc(1rem * 0.8);
+    border-radius: 7.857px;
+    background-color: var(--black);
+    box-shadow: 1.96429px 2.61905px 0px 0px var(--purple);
+}
+
+.notes-button button:hover{
+    cursor: pointer;
+}
+
+.next-notes-container{
+    height: 7rem;
+    margin-top: calc(1rem * 1);
+    overflow: hidden;
+}	
+
+.next-notes-card{
+    height: calc(100% - 2rem);
+    padding: calc(1rem * 0.5);
+    border-radius: 5px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.next-notes-title p{
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.next-notes-card li{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    font-size: calc(1rem * 0.9);
+}
+
+.next-notes-text{
+    text-align: left;
+    width: calc(1rem * 15.8);
+}
+
+.next-notes-text p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    font-weight: 600;
+}
+
+.next-notes-text p span{
+    font-weight: 400;
+}
+
+.next-notes-button button{
+    background-color: transparent;
+}
+
+.next-notes-button button:hover{
+    cursor: pointer;
+}
+
+.next-notes-button button img{
+    width: 1rem;
+}
