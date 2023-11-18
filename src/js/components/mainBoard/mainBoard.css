@@ -1,0 +1,126 @@
+.notes-section{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    margin-right: 1rem;
+    border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.notes-container{
+    width: 100%;
+    padding: 0px 1rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.notes-container-title h1{
+    font-size: calc(1rem * 1.3);
+    font-weight: 600;
+}
+
+.notes-card-container, .next-notes-section{
+    height: 100%;
+    margin: 10px auto;
+    padding: calc(1rem * 0.1) calc(1rem * 0.3);
+    background-color: var(--orange);
+}
+
+.notes-card{
+    height: 11rem;
+    padding: calc(1rem * 0.7) 0px;
+    margin: 1rem 0px;
+    border-radius: 20px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.notes-time p{
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration-line: underline;
+}
+
+.notes-title p{
+    text-decoration-line: underline;
+}
+
+.notes-button{
+    margin-top: calc(1rem * 0.5);
+}
+
+.notes-button button{
+    width: 10rem;
+    height: calc(1rem * 1.4);
+    color: var(--white);
+    font-size: calc(1rem * 0.8);
+    border-radius: 7.857px;
+    background-color: var(--black);
+    box-shadow: 1.96429px 2.61905px 0px 0px var(--purple);
+}
+
+.notes-button button:hover{
+    cursor: pointer;
+}
+
+.next-notes-container{
+    height: 7rem;
+    margin-top: calc(1rem * 1);
+    overflow: hidden;
+}	
+
+.next-notes-card{
+    height: calc(100% - 2rem);
+    padding: calc(1rem * 0.5);
+    border-radius: 5px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.next-notes-title p{
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.next-notes-card li{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    font-size: calc(1rem * 0.9);
+}
+
+.next-notes-text{
+    text-align: left;
+    width: calc(1rem * 15.8);
+}
+
+.next-notes-text p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    font-weight: 600;
+}
+
+.next-notes-text p span{
+    font-weight: 400;
+}
+
+.next-notes-button button{
+    background-color: transparent;
+}
+
+.next-notes-button button:hover{
+    cursor: pointer;
+}
+
+.next-notes-button button img{
+    width: 1rem;
+}

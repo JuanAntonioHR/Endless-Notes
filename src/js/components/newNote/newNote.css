@@ -1,0 +1,94 @@
+/* New note */
+
+.new-note-section{
+    width: 20%;
+    padding: 0px 1rem;
+    align-items: center;
+}
+
+.new-note-container{
+    height: 100%;
+}
+
+.new-note-title{
+    width: 100%;
+    margin-bottom: calc(1rem * 0.5);
+    text-align: center;
+}
+
+.new-note-title h1{
+    font-size: calc(1rem * 1.2);
+    font-weight: 600;
+}
+
+.new-note-card{
+    height: 93%;
+    border-radius: 10px;
+    border-bottom: 6px dashed #000;
+    background-color: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    font-size: calc(1rem * 0.8);
+}
+
+.input-title{
+    padding-top: calc(1rem * 0.7);
+    text-align: center;
+}
+
+.input-title input{
+    width: 90%;
+    height: 2rem;
+}
+
+.note-date-inputs{
+    display: flex;
+    justify-content: space-around;
+    padding: calc(1rem * 0.5);
+}
+
+.note-button, .new-note-title, note-text, note-time, note-date, note-date-inputs{
+    text-align: center;
+}
+
+.note-date input, .note-time input, .input-title input, .note-text textarea{
+    padding: calc(1rem * 0.5);
+    border-radius: 5px;
+    background-color: var(--gray);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.note-date input, .note-time input{
+    height: 2rem;
+    width: 5rem;
+}
+
+.note-text{
+    height: 60%;
+    text-align: center;
+}
+
+.note-text textarea{
+    height: 100%;
+    width: 90%;
+    resize: none;
+}
+
+.note-text p{
+    margin-top: calc(1rem * 0.5);
+}
+
+.note-button{
+    margin-top: calc(1rem * 3);
+}
+
+.note-button button{
+    width: 90%;
+    height: 2rem;
+    color: var(--white);
+    border-radius: 51.448px;
+    background-color: var(--black);
+}
+
+.note-date input:hover, .note-time input:hover, .note-button button:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,37 @@
+.notes-card{
+    height: 11rem;
+    padding: calc(1rem * 0.7) 0px;
+    margin: 1rem 0px;
+    border-radius: 20px;
+    border: 2px solid var(--black);
+    background: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.notes-time p{
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration-line: underline;
+}
+
+.notes-title p{
+    text-decoration-line: underline;
+}
+
+.notes-button{
+    margin-top: calc(1rem * 0.5);
+}
+
+.notes-button button{
+    width: 10rem;
+    height: calc(1rem * 1.4);
+    color: var(--white);
+    font-size: calc(1rem * 0.8);
+    border-radius: 7.857px;
+    background-color: var(--black);
+    box-shadow: 1.96429px 2.61905px 0px 0px var(--purple);
+}
+
+.notes-button button:hover{
+    cursor: pointer;
+}
