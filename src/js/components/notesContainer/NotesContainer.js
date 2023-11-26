@@ -1,51 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './notesContainer.css'
 
-export default function NotesContainer() {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
+import MainNoteCard from '../mainNoteCard/MainNoteCard';
+import NextNotesContainer from '../nextNotesContainer/NextNotesContainer';
+
+export default function NotesContainer(props) {
+    let prefix = "Mañana, ";
+
+    if(!props.prefix) {
+        const fechaActual = new Date();
     
-    useEffect(() => {
-        // Función asincrónica para realizar la solicitud GET
-        const fetchData = async () => {
-            try {
-                // Realizar la solicitud GET a la API
-                const response = await axios.get('https://');
-                
-                // Actualizar el estado con los datos de la respuesta
-                setData(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error al obtener datos:', error);
-                setLoading(false);
-            }
-        };
-    
-        // Llamar a la función fetchData cuando el componente se monta
-        fetchData();
-    }, []); // El segundo argumento [] indica que useEffect se ejecuta solo una vez al montar el componente    
+        if (fechaActual.getDate() === props.refFecha.getDate() && fechaActual.getMonth() === props.refFecha.getMonth() && fechaActual.getFullYear() === props.refFecha.getFullYear()) {
+            prefix = "Hoy, ";
+        }
+
+        prefix += props.fecha;
+    } else {
+        prefix = "Proximamente";
+    }
 
     return (
         <div className="notes-container">
             <div className="notes-container-title">
-                <h1>Hoy, {}</h1>
+                <h1>{prefix}</h1>
             </div>
-            <div className="notes-card-container">
-                <div className="notes-card">
-                    <div className="notes-time">
-                        <p>10:00 AM</p>
-                    </div>
-                    <div className="notes-title">
-                        <p>PRACTICA #5</p>
-                    </div>
-                    <div className="notes-text">
-                        <p>Realizar el diseño de la aplicación</p>
-                    </div>
-                    <div className="notes-button">
-                        <button>Eliminar</button>
-                    </div>
-                </div>
+            <div className="notes-card-container" style={{ backgroundColor: props.color }}>
+                {
+                    !props.prefix ? (
+                        // Generate notes-card for each note
+                        props.notas.map((nota) => {
+                            return (
+                                <MainNoteCard key={nota.id_nota} titulo={nota.titulo} texto={nota.texto} fecha={nota.fecha} />
+                            );
+                        })
+                    ) : (
+                        <div className="next-notes-section">
+                            <NextNotesContainer date={props.date1} notes={props.notas1}/>
+                            <NextNotesContainer date={props.date2} notes={props.notas2}/>
+                            <NextNotesContainer date={props.date3} notes={props.notas3}/>
+                        </div>
+                    )
+                }
             </div>
         </div>
     )
