@@ -30,7 +30,7 @@ export default function NotesContainer(props) {
                         // Generate notes-card for each note
                         props.notas.map((nota) => {
                             return (
-                                <MainNoteCard key={nota.id_nota} titulo={nota.titulo} texto={nota.texto} fecha={nota.fecha} />
+                                <MainNoteCard key={nota.id_nota} id={nota.id_nota} titulo={nota.titulo} texto={nota.texto} fecha={nota.fecha} />
                             );
                         })
                     ) : (

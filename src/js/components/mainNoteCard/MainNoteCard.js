@@ -20,6 +20,8 @@ export default function MainNoteCard(props) {
         time = `${hour}:${minutes} AM`;
     }
 
+    console.log(props.id_nota)
+
     return (
         <div className="notes-card">
             <div className="notes-time">
@@ -32,7 +34,23 @@ export default function MainNoteCard(props) {
                 <p>{props.texto}</p>
             </div>
             <div className="notes-button">
-                <button>Eliminar</button>
+                <button onClick={() => {
+                    if (window.confirm('Are you sure you want to delete this note?')) {
+                        fetch(`http://localhost:3000/notas/${props.id}`, { method: 'DELETE' })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Network response was not ok');
+                                }
+                                // Reload the page after successful deletion
+                                window.location.reload();
+                            })
+                            .catch(error => {
+                                console.error('There has been a problem with your fetch operation:', error);
+                            });
+                    }
+                }}>
+                    Eliminar
+                </button>
             </div>
         </div>
     )

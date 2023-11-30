@@ -53,22 +53,29 @@ export default function MainBoard({ id = 0 }) {
         try {
             // Assuming `response.data` is your notes array
             const notes = data.message;
+            console.table(tempDates)
 
             // Convert date strings to Date objects for comparison
-            const noteDates = notes.map(note => new Date(note.fecha));
+            const noteDates = notes.map((note) => {
+                const [datePart, timePart] = note.fecha.split('T');
+                const [year, month, day] = datePart.split('-').map(Number);
+                const [hour, minute, second] = timePart.slice(0, 8).split(':').map(Number);
+                const date = new Date(year, month - 1, day, hour, minute, second);
+                return date;
+            });
 
             const updatedNotesDates = [];
 
             // Create arrays for each day
             for (let i = 0; i < 5; i++) {
-                const notesDate = notes.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, 2);
+                const sliceSize = i < 2 ? 2 : 3;
+                const notesDate = notes.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
                 updatedNotesDates.push(notesDate);
             }
 
             // Set the state with the updated notesDates
             setNotesDates(updatedNotesDates);
             setLoading(false);
-            console.table(data.message)
 
         } catch (error) {
             console.error('Error en los datos:', error);

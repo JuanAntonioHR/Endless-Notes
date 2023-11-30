@@ -11,10 +11,10 @@
 .notes-time p{
     font-size: 2rem;
     font-weight: 900;
-    text-decoration-line: underline;
 }
 
 .notes-title p{
+    font-weight: 800;
     text-decoration-line: underline;
 }
 
@@ -24,7 +24,7 @@
 
 .notes-button button{
     width: 10rem;
-    height: calc(1rem * 1.4);
+    height: calc(1rem * 1.5);
     color: var(--white);
     font-size: calc(1rem * 0.8);
     border-radius: 7.857px;
@@ -33,5 +33,7 @@
 }
 
 .notes-button button:hover{
+    background-color: var(--purple);
+    box-shadow: 1.96429px 2.61905px 0px 0px var(--black);
     cursor: pointer;
 }

@@ -89,6 +89,10 @@
     background-color: var(--black);
 }
 
+.note-button button:hover{
+    background-color: var(--purple);
+}
+
 .note-date input:hover, .note-time input:hover, .note-button button:hover{
     cursor: pointer;
 }

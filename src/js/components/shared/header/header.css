@@ -31,6 +31,13 @@
     border-radius: 44px;
     border: 3px solid var(--black);
     box-shadow: 3px 5px 0px 0px var(--black);
+    color: var(--black);
+    text-decoration: none;
+}
+
+.user-info-container:hover{
+    background-color: var(--dark-purple);
+    color: var(--white);
 }
 
 .user-info-name p span{
@@ -73,7 +80,7 @@
 }
 
 .navbar-item{
-    color: white;
+    color: var(--white);
     text-decoration: none;
     padding: calc(1rem * 0.7);
     display: block;
@@ -81,6 +88,7 @@
 }
 
 .navbar-item:hover{
+    font-weight: 800;
     background-color: var(--solid-gray);
     color: var(--black);
 }
