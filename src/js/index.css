@@ -21,3 +21,8 @@
     font: inherit;
     vertical-align: baseline;
 }
+
+img {
+    pointer-events: none;
+    user-select: none;
+}
