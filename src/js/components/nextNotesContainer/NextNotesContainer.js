@@ -2,16 +2,16 @@ import React from 'react'
 import delete_icon from '../../../../assets/images/delete.svg';
 import './nextNotesContainer.css'
 
-export default function NextNotesContainer(props) {
+export default function NextNotesContainer({ date, notes }) {
     return(
         <div className="next-notes-container">
             <div className="next-notes-title">
-                <p>{props.date}</p>
+                <p>{date}</p>
             </div>
             <div className="next-notes-card">
                 <ul>
                     {
-                        props.notes.map((nota) => {
+                        notes.map((nota) => {
                             //formato de var fecha: 2023-11-25T16:00:00.000Z
                             //Sacar solo la hora
                             let time = nota.fecha.split("T");

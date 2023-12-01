@@ -90,7 +90,7 @@ export default function MainBoard({ id = 0 }) {
                 <>
                     <NotesContainer notas={notesDates[0]} fecha={dates[0]} refFecha={tempDates[0]} color={'var(--orange)'}/>
                     <NotesContainer notas={notesDates[1]} fecha={dates[1]} refFecha={tempDates[1]} color={'var(--green)'}/>
-                    <NotesContainer notas1={notesDates[2]} date1={dates[2]} notas2={notesDates[3]} date2={dates[3]} notas3={notesDates[4]} date3={dates[4]} color={'var(--yellow)'} prefix={true}/>
+                    <NotesContainer notas1={notesDates[2]} date1={dates[2]} notas2={notesDates[3]} date2={dates[3]} notas3={notesDates[4]} date3={dates[4]} color={'var(--yellow)'} next={true}/>
                 </>
             )}
         </div>

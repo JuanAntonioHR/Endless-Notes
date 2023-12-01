@@ -6,8 +6,8 @@ export default function Home() {
 
   return (
     <div className="screen">
-      <Header />
-      <HomeBoard />
+      <Header id_usuario={0}/>
+      <HomeBoard id_usuario={0}/>
     </div>
   )
 }
