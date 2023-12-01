@@ -69,7 +69,12 @@ export default function MainBoard({ id = 0 }) {
             // Create arrays for each day
             for (let i = 0; i < 5; i++) {
                 const sliceSize = i < 2 ? 2 : 3;
-                const notesDate = notes.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
+                let notesDate = [];
+                if (i == 0) {
+                    notesDate = notes.filter((note, j) => noteDates[j] > new Date() && noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
+                } else {
+                    notesDate = notes.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
+                }
                 updatedNotesDates.push(notesDate);
             }
 
