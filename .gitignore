@@ -138,6 +138,7 @@ dist
 
 # Webpack build
 /build/js
+/build/js/app.js
 
 # Optional stylelint cache
 
