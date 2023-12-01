@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import delete_icon from '../../../../assets/images/delete.svg';
 import './mainBoard.css'
 
 import NotesContainer from '../notesContainer/NotesContainer';
