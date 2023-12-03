@@ -22,7 +22,6 @@
     vertical-align: baseline;
 }
 
-img {
-    pointer-events: none;
+img, button{
     user-select: none;
 }
