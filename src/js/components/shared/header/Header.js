@@ -17,7 +17,7 @@ export default function Header() {
             </div>
             <div className="navigation-container">
                 <div className="navigation-container-top">
-                    <Link to="/user" className="user-info-container">
+                    <Link to="/profile" className="user-info-container">
                         <div className="user-info-name">
                             <p>Hola, <span>{name}</span></p>
                         </div>
