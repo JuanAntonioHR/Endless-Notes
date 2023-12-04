@@ -36,7 +36,7 @@ export default function MainNoteCard({ fecha, titulo, texto, id }) {
             </div>
             <div className="notes-button">
                 <button onClick={() => {
-                    if (window.confirm('Are you sure you want to delete this note?')) {
+                    if (window.confirm(`Estas seguro que quieres eliminar la nota ${titulo}?`)) {
                         fetch(`http://localhost:3000/notas/${id}`, { method: 'DELETE' })
                             .then(response => {
                                 if (!response.ok) {
