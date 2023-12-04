@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { NotesContext } from '../../App';
 import axios from 'axios';
 import './mainBoard.css'
 
 import NotesContainer from '../notesContainer/NotesContainer';
 
-export default function MainBoard({ id = 0 }) {
-    const [data, setData] = useState([]);
+export default function MainBoard() {
     const [notesDates, setNotesDates] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { user, notes, setNotes } = useContext(NotesContext);
+
+    const id = 0;
 
     const fetchData = async () => {
         try {
             const url = `http://localhost:3000/notas/${id}`;
             const response = await axios.get(url);
-    
-            // Update the state with the data
-            setData(response.data);
-    
-            // Return the data
-            return response.data;
+            setNotes(response.data.message);
+            assignNotes();
         } catch (error) {
             console.error('Error al obtener datos:', error);
             return null;
@@ -26,15 +25,12 @@ export default function MainBoard({ id = 0 }) {
     };
 
     useEffect(() => {
-        const fetchDataAndAsignNotes = async () => {
-            const datos = await fetchData();
-            if (datos) {
-                assignNotes(datos);
-            }
-        };
-    
-        fetchDataAndAsignNotes();
+        fetchData();
     }, []);
+
+    useEffect(() => {
+        assignNotes();
+    }, [notes]);
 
     const tempDates = [];
     const dates = [];
@@ -48,14 +44,13 @@ export default function MainBoard({ id = 0 }) {
         dates.push(date);
     }
 
-    function assignNotes(data) {
+    function assignNotes() {
         try {
             // Assuming `response.data` is your notes array
-            const notes = data.message;
-            console.table(tempDates)
+            const notex = notes;
 
             // Convert date strings to Date objects for comparison
-            const noteDates = notes.map((note) => {
+            const noteDates = notex.map((note) => {
                 const [datePart, timePart] = note.fecha.split('T');
                 const [year, month, day] = datePart.split('-').map(Number);
                 const [hour, minute, second] = timePart.slice(0, 8).split(':').map(Number);
@@ -70,9 +65,9 @@ export default function MainBoard({ id = 0 }) {
                 const sliceSize = i < 2 ? 2 : 3;
                 let notesDate = [];
                 if (i == 0) {
-                    notesDate = notes.filter((note, j) => noteDates[j] > new Date() && noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
+                    notesDate = notex.filter((note, j) => noteDates[j] > new Date() && noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
                 } else {
-                    notesDate = notes.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
+                    notesDate = notex.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
                 }
                 updatedNotesDates.push(notesDate);
             }

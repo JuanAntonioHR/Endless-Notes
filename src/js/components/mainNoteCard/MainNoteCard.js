@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { NotesContext } from '../../App'
 import './mainNoteCard.css'
 
-export default function MainNoteCard(props) {
+export default function MainNoteCard({ fecha, titulo, texto, id }) {
+    const { notes, setNotes } = useContext(NotesContext);
+
     //formato de var fecha: 2023-11-25T16:00:00.000Z
     //Sacar solo la hora
-    let time = props.fecha.split("T");
+    let time = fecha.split("T");
     time = time[1].split(".");
     time = time[0];
 
@@ -19,30 +22,29 @@ export default function MainNoteCard(props) {
     } else {
         time = `${hour}:${minutes} AM`;
     }
-
-    console.log(props.id_nota)
-
+    
     return (
         <div className="notes-card">
             <div className="notes-time">
                 <p>{time}</p>
             </div>
             <div className="notes-title">
-                <p>{props.titulo}</p>
+                <p>{titulo}</p>
             </div>
             <div className="notes-text">
-                <p>{props.texto}</p>
+                <p>{texto}</p>
             </div>
             <div className="notes-button">
                 <button onClick={() => {
                     if (window.confirm('Are you sure you want to delete this note?')) {
-                        fetch(`http://localhost:3000/notas/${props.id}`, { method: 'DELETE' })
+                        fetch(`http://localhost:3000/notas/${id}`, { method: 'DELETE' })
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error('Network response was not ok');
                                 }
-                                // Reload the page after successful deletion
-                                window.location.reload();
+                                // Modify notes array
+                                const newNotes = notes.filter((note) => note.id_nota !== id);
+                                setNotes(newNotes);
                             })
                             .catch(error => {
                                 console.error('There has been a problem with your fetch operation:', error);

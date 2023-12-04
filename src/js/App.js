@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState, useContext } from "react";
 
 // Views
 import Index from "./views/Index/Index";
@@ -17,17 +17,24 @@ import {
 // Styles
 import './app.css';
 
+// Context
+export const NotesContext = createContext();
+
 export default function App() {
-    
+    const [user, setUser] = useState({});
+    const [notes, setNotes] = useState([]);
+
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/profile" element={<Profile />} />
-            </Routes>
-        </Router>
-    )
+        <NotesContext.Provider value={{ notes, setNotes, user, setUser }}>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Index />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/profile" element={<Profile />} />
+                </Routes>
+            </Router>
+        </NotesContext.Provider>
+    );
 }

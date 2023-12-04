@@ -6,8 +6,8 @@ import navbar_extension from '../../../../../assets/images/navbar-extension.svg'
 import './header.css'
 
 export default function Header() {
-    const name = "Chuchito";
-
+    const name = 'Chuchito';
+    
     return (
         <div className="header-section">
             <div className="icon-container">

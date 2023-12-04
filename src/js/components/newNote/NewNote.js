@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './newNote.css';
 
-export default function NewNote({ id_usuario = 0 }) {
+export default function NewNote() {
+    const id_usuario = 0;
+
     const [remaining, setRemaining] = useState(100);
     const [titulo, setTitulo] = useState('');
     const [texto, setTexto] = useState('');
