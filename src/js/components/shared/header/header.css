@@ -10,7 +10,7 @@
 }
 
 .icon-container img{
-    width: 7rem
+    width: 7rem;
 }
 
 .navigation-container-top{
@@ -51,6 +51,7 @@
 
 .user-info-avatar img{
     width: 2rem;
+    pointer-events: none;
 }
 
 .navbar, .navbar-section, .navigation-container{
@@ -67,6 +68,7 @@
 .navbar-extension img{
     width: 2rem;
     transform: translate(1px);
+    pointer-events: none;
 }
 
 .navbar ul{

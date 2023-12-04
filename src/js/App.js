@@ -21,7 +21,13 @@ import './app.css';
 export const NotesContext = createContext();
 
 export default function App() {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState({
+        "id_usuario": 0,
+        "nombre": "Juan Antonio Herrera de la Rosa",
+        "correo": "juanin10toni@gmail.com",
+        "respuesta": "Naranja",
+        "pregunta": "Color favorito"
+    });
     const [notes, setNotes] = useState([]);
 
     return (

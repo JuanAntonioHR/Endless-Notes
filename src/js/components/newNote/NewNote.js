@@ -3,14 +3,14 @@ import { NotesContext } from '../../App';
 import './newNote.css';
 
 export default function NewNote() {
-    const id_usuario = 0;
-
     const [remaining, setRemaining] = useState(100);
     const [titulo, setTitulo] = useState('');
     const [texto, setTexto] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const { user, setNotes } = useContext(NotesContext);
+
+    const id_usuario = user.id_usuario;
 
     const handleInputChange = (event) => {
         setRemaining(100 - event.target.value.length);
