@@ -48,6 +48,7 @@ export default function MainBoard() {
         try {
             // Assuming `response.data` is your notes array
             const notex = notes;
+            console.log(notex)
 
             // Convert date strings to Date objects for comparison
             const noteDates = notex.map((note) => {

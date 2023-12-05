@@ -1,0 +1,26 @@
+.board-section{
+    padding: calc(1rem * 1.5) 0px;
+}
+
+.board-table{
+    width: 80%;
+    height: 100%;
+    margin: 0px auto;
+    padding: 1rem 3rem;
+    border-radius: 10px;
+    background-color: var(--white);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+}
+
+.board-table h1{
+    font-size: calc(1rem * 1.5);
+    font-weight: 600;
+}
+
+.board-card{
+    padding: calc(1rem * 1.5);
+    height: 91%;
+    background-color: var(--light-purple);
+    max-height: 500px;
+    overflow-y: auto; /* Enable vertical scrollbar */
+}

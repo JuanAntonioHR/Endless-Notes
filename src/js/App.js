@@ -6,6 +6,7 @@ import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
 import Home from "./views/Home/Home";
 import Profile from "./views/Profile/Profile";
+import Board from "./views/Board/Board"
 
 // Router
 import {
@@ -39,6 +40,7 @@ export default function App() {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/board" element={<Board />} />
                 </Routes>
             </Router>
         </NotesContext.Provider>
