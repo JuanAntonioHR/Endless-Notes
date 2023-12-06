@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../../components/shared/header/Header'
 
-export default function Profile() {
+export default function Setting() {
     return (
         <div>
             <Header id_usuario={0}/>
