@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NotesContext } from '../../App'
+import { NotesContext } from '../../App.js'
 import trash_icon from '../../../../assets/images/trash-icon.svg'
 import './boardNote.css'
 

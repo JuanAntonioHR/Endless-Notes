@@ -1,8 +1,8 @@
 import React from 'react';
 import './notesContainer.css'
 
-import MainNoteCard from '../mainNoteCard/MainNoteCard';
-import NextNotesContainer from '../nextNotesContainer/NextNotesContainer';
+import MainNoteCard from '../mainNoteCard/MainNoteCard.js';
+import NextNotesContainer from '../nextNotesContainer/NextNotesContainer.js';
 
 export default function NotesContainer({ notas, fecha, refFecha, color, notas1, notas2, notas3, date1, date2, date3, next }) {
     let prefix = "Mañana, ";

@@ -1,12 +1,15 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
+import dotenv from 'dotenv';
+dotenv.config();
 
 // Views
-import Index from "./views/Index/Index";
-import Login from "./views/Login/Login";
-import Signup from "./views/Signup/Signup";
-import Home from "./views/Home/Home";
-import Profile from "./views/Profile/Profile";
-import Board from "./views/Board/Board"
+import Index from "./views/Index/Index.js";
+import Login from "./views/Login/Login.js";
+import Signup from "./views/Signup/Signup.js";
+import Home from "./views/Home/Home.js";
+import Profile from "./views/Profile/Profile.js";
+import Board from "./views/Board/Board.js"
 
 // Router
 import {
@@ -30,6 +33,38 @@ export default function App() {
         "pregunta": "Color favorito"
     });
     const [notes, setNotes] = useState([]);
+
+    // Text to speech
+    useEffect(() => {
+        async function convertTextToMp3(id, text) {
+            try {
+                id = 0;
+                text = "Hello world";
+        
+                const response = await axios.post(
+                "https://texttospeech.googleapis.com/v1/text:synthesize",
+                {
+                    input: { text: text },
+                    voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
+                    audioConfig: { audioEncoding: "MP3" },
+                },
+                {
+                    params: {
+                    key: process.env.REACT_APP_GOOGLE_API_KEY, // Set your Google API key
+                    },
+                }
+                );
+        
+                // Handle the response, for example, play the audio or save it to a file
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        
+        // Call the function
+        // convertTextToMp3();
+    }, [notes]); // Ensure this effect runs only once when the component mounts    
 
     return (
         <NotesContext.Provider value={{ notes, setNotes, user, setUser }}>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NotesContext } from '../../../App';
+import { NotesContext } from '../../../App.js';
 import { Link } from "react-router-dom";
 import icon from '../../../../../assets/images/endless-notes-icon.png';
 import user_icon from '../../../../../assets/images/user-icon.svg';

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { NotesContext } from '../../App';
+import { NotesContext } from '../../App.js';
 import axios from 'axios';
 import './mainBoard.css'
 
-import NotesContainer from '../notesContainer/NotesContainer';
+import NotesContainer from '../notesContainer/NotesContainer.js';
 
 export default function MainBoard() {
     const [notesDates, setNotesDates] = useState([]);

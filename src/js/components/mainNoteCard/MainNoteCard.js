@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NotesContext } from '../../App'
+import { NotesContext } from '../../App.js'
 import './mainNoteCard.css'
 
 export default function MainNoteCard({ fecha, titulo, texto, id }) {

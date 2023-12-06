@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { NotesContext } from '../../App';
+import { NotesContext } from '../../App.js';
 import './newNote.css';
 
 export default function NewNote() {

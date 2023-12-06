@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { NotesContext } from '../../App'
+import { NotesContext } from '../../App.js'
 import './boardBoard.css'
-import BoardNote from '../boardCard/BoardNote';
+import BoardNote from '../boardCard/BoardNote.js';
 
 export default function Board() {
     const { notes } = useContext(NotesContext)
