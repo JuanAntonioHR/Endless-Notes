@@ -11,13 +11,13 @@ export default function Profile() {
                     <h1>Mi cuenta</h1>
                     <div class="edition">
                         <div class="edit">
-                            <div class="changes"><input type="text" placeholder="Cambiar correo" /></div>
-                            <div class="changes"><input type="text" placeholder="Cambiar nombre" /></div>
-                            <div class="changes"><input type="password" placeholder="Cambiar contraseña" /></div>
-                            <div class="changes"><button>Guardar cambios</button></div>                           
+                            <div class="changes" ><input id="newEmail" type="text" placeholder="Cambiar correo" /></div>
+                            <div class="changes"><input id="newName" type="text" placeholder="Cambiar nombre" /></div>
+                            <div class="changes"><input id="newPassword" type="password" placeholder="Cambiar contraseña" /></div>
+                            <div class="changes"><button Onclick="">Guardar cambios</button></div>                           
                         </div>
                         <div class="photo">
-                            vddagdfgsdfgdf
+                            <img src="assets/images/usuario.png" />
                         </div>
                     </div>
                     <div class="eliminar">

@@ -8,6 +8,15 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
     border-radius: 10px;
 }
+
+.edit-profile h1{
+    padding-left: 10%;
+    font-size: calc(1rem * 1.2);
+    font-weight: 600;
+    font-family: Roboto;
+    font-weight: 600;
+}
+
 .eliminar {
     display: flex;
     justify-content: center;
@@ -19,16 +28,68 @@
     padding: 30px;
     margin: 20px;
     box-shadow: 4px;
+    justify-content: space-between;
 }
 .changes{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding: 5%;
+    align-items: center;
 }
+
+.changes button
+{
+    padding: 10px 15px;
+    font-family: Roboto;
+    background-color: #ECE1B9;
+    box-shadow: 4px;
+    border-radius: 15px;
+    display: block;
+    cursor: pointer;
+}
+
+.changes button:hover{
+    font-family: Roboto;
+    color: #ECE1B9;
+    background-color: black;
+}
+
+.changes input{
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    font-family: Roboto;
+}
+
 
 .eliminar button{
     color:white;
     background-color: black;
     height: 30px;
     width: 150px;
+    box-shadow: 4px;
     border-radius: 15px;
+    font-family: Roboto;
+    cursor: pointer;
+}
+
+.eliminar button:hover{
+    margin: black 4px;
+    background-color: white;
+    color: black;
+    font-family: Roboto;
+}
+
+.edit{
+    align-items: center;
+}
+
+.photo{
+    background-color: white;
+    padding: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.photo img{
+    height: 100px;
+    width: 100px;
 }
