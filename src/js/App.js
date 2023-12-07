@@ -16,6 +16,7 @@ import {
 
 // Styles
 import './app.css';
+import Setting from "./views/Setting/Setting";
 
 export default function App() {
     
@@ -27,7 +28,7 @@ export default function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/setting" element={<Profile />} />
+                <Route path="/setting" element={<Setting />} />
             </Routes>
         </Router>
     )

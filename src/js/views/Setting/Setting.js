@@ -6,7 +6,7 @@ export default function Setting() {
         <div>
             <Header id_usuario={0}/>
             <div>
-                xd
+                Configuración
             </div>
         </div>
     )
