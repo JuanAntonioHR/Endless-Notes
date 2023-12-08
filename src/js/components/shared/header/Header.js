@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NotesContext } from '../../../App';
 import { Link } from "react-router-dom";
 import icon from '../../../../../assets/images/endless-notes-icon.png';
 import user_icon from '../../../../../assets/images/user-icon.svg';
@@ -6,7 +7,8 @@ import navbar_extension from '../../../../../assets/images/navbar-extension.svg'
 import './header.css'
 
 export default function Header() {
-    const name = "Chuchito";
+    const { user } = useContext(NotesContext);
+    const name = user.nombre.split(' ')[0];
 
     return (
         <div className="header-section">
