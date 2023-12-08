@@ -24,6 +24,7 @@ import Setting from "./views/Setting/Setting";
 export const NotesContext = createContext();
 
 export default function App() {
+    const [notification, setNotification] = useState(true)
     const [user, setUser] = useState({
         "id_usuario": 0,
         "nombre": "Juan Antonio Herrera de la Rosa",
@@ -56,10 +57,10 @@ export default function App() {
 
         // Call the function
         convertTextToMp3();
-    }, []); // Ensure this effect runs only once when the component mounts         
+    }, []); // Ensure this effect runs only once when the component mounts
 
     return (
-        <NotesContext.Provider value={{ notes, setNotes, user, setUser }}>
+        <NotesContext.Provider value={{ notes, setNotes, user, setUser, setNotification }}>
             <Router>
                 <Routes>
                     <Route path="/" element={<Index />} />

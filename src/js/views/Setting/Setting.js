@@ -1,27 +1,31 @@
-import React from 'react'
-import Header from '../../components/shared/header/Header'
+import React, { useContext } from 'react'
+import { NotesContext } from '../../App';
+import { Link } from "react-router-dom";
 import './setting.css'
 
+import Header from '../../components/shared/header/Header'
+
 export default function Setting() {
+    const { setNotification } = useContext(NotesContext);
+
     return (
         <div className="screen">
-            <Header id_usuario={0}/>
+            <Header />
                 <div className="screen2">
                     <div className="settings">
                         <h1>Configuración</h1>
                         <div className="options">
-                            <div className="configure">Cambiar pregunta de seguridad </div>
-                            <div className="configure">
+                            <Link to='/question' className="configure">Cambiar pregunta de seguridad</Link>
+                            <div className="configure" id='select'>
                                 Notificaciones 
-                                <select>
-                                    <option>Activadas</option>
-                                    <option>Desactivadas</option>
+                                <select onChange={(e) => setNotification(e.target.value)}>
+                                    <option value="true">Activadas</option>
+                                    <option value="false">Desactivadas</option>
                                 </select>
                             </div>
-                            
-                            <div className="configure">Ayuda </div>
-                            <div className="configure">Política de privacidad </div>
-                            <div className="configure">Condiciones de servicio </div>
+                            <button className="configure" onClick={() => alert('In development')}>Ayuda</button>
+                            <button className="configure" onClick={() => alert('In development')}>Política de privacidad</button>
+                            <button className="configure" onClick={() => alert('In development')}>Condiciones de servicio</button>
                         </div>
                     </div>
                 </div>

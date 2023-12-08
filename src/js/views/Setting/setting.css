@@ -1,9 +1,10 @@
 .screen2{
-    background-color: #f1f1f7;
+    background-color: var(--gray);
     padding: 1rem 0;
 }
+
 .settings{
-    background-color: white;
+    background-color: var(--white);
     margin: 2% 30%;
     padding: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
@@ -11,7 +12,8 @@
 }
 
 .settings h1{
-    padding-left: 10%;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
     font-size: calc(1rem * 1.2);
     font-weight: 600;
     font-family: Roboto;
@@ -19,23 +21,34 @@
 }
 
 .options{
-    background-color: #DEDEF0;
-    padding: 10px 10px;
+    background-color: var(--light-purple);
+    padding: 1rem;
 }
 
 .configure{
-    background-color: white;
+    width: 95%;
+    background-color: var(--white);
     padding: 10px 20px;
-    border: #f1f1f7 2px solid;
+    border: var(--gray) 2px solid;
     margin: 10px 10px;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    color:#AFAFAF;
     font-family: Roboto;
+    text-decoration: none;
+    color: var(--black);
 }
 
-.configure select{
-    color: #AFAFAF;
+.configure:hover{
+    background-color: var(--gray);
+    cursor: pointer;
+}
+
+#select:hover{
+    background-color: var(--white);
+    cursor: default;
+}
+
+.configure select:hover{
     cursor: pointer;
 }

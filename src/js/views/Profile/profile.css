@@ -1,8 +1,9 @@
 .screen3{
-    background-color: #f1f1f7;
+    background-color: var(--gray);
 }
+
 .edit-profile{
-    background-color: white;
+    background-color: var(--white);
     margin: 2% 20%;
     padding: 30px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
@@ -14,7 +15,6 @@
     font-size: calc(1rem * 1.2);
     font-weight: 600;
     font-family: Roboto;
-    font-weight: 600;
 }
 
 .eliminar {
@@ -22,60 +22,63 @@
     justify-content: center;
     align-items: center;
 }
+
 .edition{
-    background-color: #DEDEF0;
+    background-color: var(--light-purple);
     display: flex;
     padding: 30px;
     margin: 20px;
     box-shadow: 4px;
     justify-content: space-between;
 }
+
 .changes{
-    padding: 5%;
+    padding: calc(1rem * 0.5);
     align-items: center;
 }
 
-.changes button
-{
+.changes button{
+    width: 100%;
+    margin: 0px auto;
     padding: 10px 15px;
+    background-color: var(--yellow);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
     font-family: Roboto;
-    background-color: #ECE1B9;
-    box-shadow: 4px;
-    border-radius: 15px;
+    font-weight: 700;
     display: block;
     cursor: pointer;
 }
 
 .changes button:hover{
-    font-family: Roboto;
-    color: #ECE1B9;
-    background-color: black;
+    background-color: var(--black);
+    color: var(--white);
 }
 
 .changes input{
     width: 200px;
     height: 30px;
-    text-align: center;
+    padding: 1.3rem 1rem;
     font-family: Roboto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
 }
 
-
 .eliminar button{
-    color:white;
-    background-color: black;
-    height: 30px;
-    width: 150px;
-    box-shadow: 4px;
-    border-radius: 15px;
-    font-family: Roboto;
+    height: calc(1rem * 2.2);
+    width: 14rem;
+    font-family: Sora;
     cursor: pointer;
+    border-radius: 7.857px;
+    background-color: var(--black);
+    box-shadow: 1.96429px 2.61905px 0px 0px var(--purple);
+    color:var(--white);
 }
 
 .eliminar button:hover{
-    margin: black 4px;
-    background-color: white;
-    color: black;
-    font-family: Roboto;
+    background-color: var(--purple);
+    box-shadow: 1.96429px 2.61905px 0px 0px var(--black);
+    cursor: pointer;
 }
 
 .edit{

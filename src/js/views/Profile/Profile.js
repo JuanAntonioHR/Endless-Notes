@@ -5,16 +5,24 @@ import './profile.css'
 export default function Profile() {
     return (
         <div className="screen">
-            <Header id_usuario={0}/>
+            <Header />
             <div className="screen3">
                 <div className="edit-profile">
                     <h1>Mi cuenta</h1>
                     <div className="edition">
                         <div className="edit">
-                            <div className="changes" ><input id="newEmail" type="text" placeholder="Cambiar correo" /></div>
-                            <div className="changes"><input id="newName" type="text" placeholder="Cambiar nombre" /></div>
-                            <div className="changes"><input id="newPassword" type="password" placeholder="Cambiar contraseña" /></div>
-                            <div className="changes"><button Onclick="">Guardar cambios</button></div>                           
+                            <div className="changes" >
+                                <input id="newEmail" type="text" placeholder="Cambiar correo"/>
+                            </div>
+                            <div className="changes">
+                                <input id="newName" type="text" placeholder="Cambiar nombre"/>
+                            </div>
+                            <div className="changes">
+                                <input id="newPassword" type="text" placeholder="Cambiar contraseña"/>
+                            </div>
+                            <div className="changes">
+                                <button>Guardar cambios</button>
+                            </div>
                         </div>
                         <div className="photo">
                             <img src="assets/images/usuario.png" />
