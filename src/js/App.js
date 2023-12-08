@@ -18,6 +18,7 @@ import {
 
 // Styles
 import './app.css';
+import Setting from "./views/Setting/Setting";
 
 // Context
 export const NotesContext = createContext();
@@ -67,6 +68,7 @@ export default function App() {
                     <Route path="/home" element={<Home />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/board" element={<Board />} />
+                    <Route path="/setting" element={<Setting />} />
                 </Routes>
             </Router>
         </NotesContext.Provider>
