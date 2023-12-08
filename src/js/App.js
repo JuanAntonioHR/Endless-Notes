@@ -6,6 +6,8 @@ import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
 import Home from "./views/Home/Home";
 import Profile from "./views/Profile/Profile";
+import SQuestion from "./views/SQuestion/SQuestion";
+import Alarm from "./views/Alarm/Alarm";
 
 // Router
 import {
@@ -27,6 +29,8 @@ export default function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/squestion" element={<SQuestion />} />
+                <Route path="/alarm" element={<Alarm />} />
             </Routes>
         </Router>
     )

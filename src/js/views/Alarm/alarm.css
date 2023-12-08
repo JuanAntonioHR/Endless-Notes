@@ -1,0 +1,87 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: lightpurple;
+  }
+  
+  .form-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .form-card {
+    width: 90%;
+    max-width: 90%;
+    height: 80%;
+    padding: 2rem;
+    border-radius: 5px;
+    background-color: #DEDEF0; 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    letter-spacing: 1px;
+  }
+  
+  .bell-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: auto;
+  }
+  
+  .time {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos dentro de .time */
+  }
+  
+  .time h1 {
+    font-family: Arial, sans-serif;
+    color: black;
+    font-size: 60px;
+    margin-left: 10px; /* Añade margen a la izquierda para separar la campana del texto */
+  }
+  
+  .security-message {
+    font-family: Arial, sans-serif;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: calc(1rem * 1.5);
+  }
+  
+  .form-button button {
+    width: 100%;
+    height: calc(1rem * 2.4);
+    padding: calc(1rem * 0.5);
+    border-radius: 5px;
+    background-color: blue;
+    border: none;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: white;
+    border-radius: 10px;
+    border: 1.092px solid blue;
+    box-shadow: 3px 3px 0px 0px #000;
+  }
+  
+  .form-button button:hover {
+    border: 1.092px solid darkblue;
+    background-color: darkblue;
+    cursor: pointer;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
