@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import axios from "axios";
 
 // Views
 import Index from "./views/Index/Index";
@@ -30,6 +31,31 @@ export default function App() {
         "pregunta": "Color favorito"
     });
     const [notes, setNotes] = useState([]);
+    
+    useEffect(() => {
+        async function convertTextToMp3(id, text) {
+            try {
+            id = 0;
+            text = "Hello world";
+
+            // Assume `textToSpeech` library is used on the server side
+            // Make a request to your server endpoint that utilizes `textToSpeech` library
+            const response = await axios.post("http://localhost:3000/api/text-to-speech", {
+                text: text,
+                voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
+                audioConfig: { audioEncoding: "MP3" },
+            });
+
+            // Handle the response, for example, play the audio or save it to a file
+            console.log(response.data);
+            } catch (error) {
+            console.error(error);
+            }
+        }
+
+        // Call the function
+        convertTextToMp3();
+    }, []); // Ensure this effect runs only once when the component mounts         
 
     return (
         <NotesContext.Provider value={{ notes, setNotes, user, setUser }}>
