@@ -1,4 +1,5 @@
 import React from "react";
+import bell from '../../../../assets/images/campana.png';
 import './alarm.css';
 
 
@@ -8,9 +9,8 @@ export default function Alarm() {
     <div className="screen">
       <div className="form-container">
         <div className="form-card">
-          <div className="time">
-            {/*Aqui trate de importar la imagen de la campana pero no pude*/}
-            <img className="bell-icon" src="..." alt="Campana" /> 
+        <img src={bell} alt="icon" className="bell-icon" />
+        <div className="time">
             <h1>10:00 AM</h1>
           </div>
           <p className="security-message">
