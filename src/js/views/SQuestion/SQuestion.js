@@ -60,7 +60,7 @@ export default function Login() {
             <img src={icon} alt="icon" />
           </div>
           <p className="security-message-sq">
-            Para continuar su registro se requiere una pregunta de seguridad, en caso de olvidar su contraseña.
+            Para su registro se requiere una pregunta de seguridad, en caso de olvidar su contraseña.
           </p>
           <div className="text-field-sq">
             <input type="text" placeholder="Pregunta de seguridad" maxLength="40" value={question} onChange={(e) => setQuestion(e.target.value)}/>

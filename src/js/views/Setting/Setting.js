@@ -15,7 +15,7 @@ export default function Setting() {
                     <div className="settings">
                         <h1>Configuración</h1>
                         <div className="options">
-                            <Link to='/question' className="configure">Cambiar pregunta de seguridad</Link>
+                            <Link to='/squestion' className="configure">Cambiar pregunta de seguridad</Link>
                             <div className="configure" id='select'>
                                 Notificaciones 
                                 <select onChange={(e) => setNotification(e.target.value)}>

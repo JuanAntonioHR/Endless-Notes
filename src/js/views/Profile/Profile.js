@@ -4,7 +4,7 @@ import Header from '../../components/shared/header/Header'
 import './profile.css'
 
 export default function Profile() {
-    const { user } = useContext(NotesContext);
+    const { user, setUser } = useContext(NotesContext);
     const [newEmail, setNewEmail] = useState('');
     const [newName, setNewName] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -32,6 +32,33 @@ export default function Profile() {
     
             const data = await response.json();
             console.log(data);
+
+            if (data.code === 200) {
+                alert(data.message);
+
+                if (newEmail) {
+                    setUser({
+                        ...user,
+                        correo: newEmail
+                    });
+                }
+                if (newName) {
+                    setUser({
+                        ...user,
+                        nombre: newName
+                    });
+                }
+                if (newPassword) {
+                    setUser({
+                        ...user,
+                        contrasena: newPassword
+                    });
+                }
+
+                setNewEmail('');
+                setNewName('');
+                setNewPassword('');
+            }
             
         } catch (error) {
             console.error(error);

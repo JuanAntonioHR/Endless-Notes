@@ -8,7 +8,6 @@ import './header.css'
 
 export default function Header() {
     const { user } = useContext(NotesContext);
-    const name = user.nombre.split(' ')[0];
 
     return (
         <div className="header-section">
@@ -21,7 +20,7 @@ export default function Header() {
                 <div className="navigation-container-top">
                     <Link to="/profile" className="user-info-container">
                         <div className="user-info-name">
-                            <p>Hola, <span>{name}</span></p>
+                            <p>Hola, <span>{user.nombre.split(' ')[0]}</span></p>
                         </div>
                         <div className="user-info-avatar">
                             <img src={user_icon} alt="user-icon" />
