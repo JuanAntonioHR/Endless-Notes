@@ -1,5 +1,5 @@
 import React from "react";
-import bell from '../../../../assets/images/campana.png';
+import bell from '../../../../assets/images/bell.svg';
 import './alarm.css';
 
 
@@ -9,13 +9,18 @@ export default function Alarm() {
     <div className="screen">
       <div className="form-container">
         <div className="form-card">
-        <img src={bell} alt="icon" className="bell-icon" />
-        <div className="time">
-            <h1>10:00 AM</h1>
+          <img src={bell} alt="icon" className="bell-icon" />
+          <div className="alarm-content">
+            <div className="time">
+              <h1>10:00 AM</h1>
+            </div>
+            <p className="alarm-title">
+              PRACTICA #5
+            </p>
+            <p className="alarm-text">
+              ESTRUCTURA DE DATOS
+            </p>
           </div>
-          <p className="security-message">
-            PRACTICA #5 ESTRUCTURA DE DATOS
-          </p>
           <div className="form-button">
             <button>Finalizar</button>
           </div>
