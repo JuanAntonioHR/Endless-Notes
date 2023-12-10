@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { NotesContext } from '../../App';
 import './newNote.css';
 
-export default function NewNote({ id_usuario = 0 }) {
+export default function NewNote() {
     const [remaining, setRemaining] = useState(100);
     const [titulo, setTitulo] = useState('');
     const [texto, setTexto] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const { user, setNotes } = useContext(NotesContext);
+
+    const id_usuario = user.id_usuario;
 
     const handleInputChange = (event) => {
         setRemaining(100 - event.target.value.length);
@@ -34,7 +38,16 @@ export default function NewNote({ id_usuario = 0 }) {
             .then(data => {
                 console.log('Success:', data);
                 alert('Nota subida correctamente');
-                window.location.reload();
+
+                // Modifica el array de notas
+                // Actualiza el estado local con la nueva nota
+                setNotes(prevNotes => [...prevNotes, data.newNote]);
+
+                // Limpia los campos
+                setTitulo('');
+                setTexto('');
+                setDate('');
+                setTime('');
             })
             .catch((error) => {
                 console.error('Error:', error);

@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import { NotesContext } from '../../App'
-import './mainNoteCard.css'
+import trash_icon from '../../../../assets/images/trash-icon.svg'
+import './boardNote.css'
 
-export default function MainNoteCard({ fecha, titulo, texto, id }) {
-    const { notes, setNotes } = useContext(NotesContext);
-
-    //formato de var fecha: 2023-11-25T16:00:00.000Z
+export default function BoardCard({ id, titulo, fecha }){
+    const { notes, setNotes } = useContext(NotesContext)
+    
+    const date = fecha.split('T')[0]
     //Sacar solo la hora
     let time = fecha.split("T");
     time = time[1].split(".");
@@ -22,20 +23,19 @@ export default function MainNoteCard({ fecha, titulo, texto, id }) {
     } else {
         time = `${hour}:${minutes} AM`;
     }
-    
+
     return (
-        <div className="notes-card">
-            <div className="notes-time">
-                <p>{time}</p>
-            </div>
-            <div className="notes-title">
-                <p>{titulo}</p>
-            </div>
-            <div className="notes-text">
-                <p>{texto}</p>
-            </div>
-            <div className="notes-button">
-                <button onClick={() => {
+        <div className="board-note">
+            <p className="board-note-date">
+                {date}
+            </p>
+            <p className="board-note-time">
+                {time}
+            </p>
+            <p className="board-note-title">
+                {titulo}
+            </p>
+            <button className='board-note-delete' onClick={() => {
                     if (window.confirm(`Estas seguro que quieres eliminar la nota ${titulo}?`)) {
                         fetch(`http://localhost:3000/notas/${id}`, { method: 'DELETE' })
                             .then(response => {
@@ -51,9 +51,8 @@ export default function MainNoteCard({ fecha, titulo, texto, id }) {
                             });
                     }
                 }}>
-                    Eliminar
-                </button>
-            </div>
+                <img src={trash_icon} alt="trash-icon" />
+            </button>
         </div>
     )
 }

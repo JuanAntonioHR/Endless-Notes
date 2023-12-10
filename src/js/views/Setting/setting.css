@@ -1,0 +1,54 @@
+.screen2{
+    background-color: var(--gray);
+    padding: 1rem 0;
+}
+
+.settings{
+    background-color: var(--white);
+    margin: 2% 30%;
+    padding: 30px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 10px;
+}
+
+.settings h1{
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: calc(1rem * 1.2);
+    font-weight: 600;
+    font-family: Roboto;
+    font-weight: 600;
+}
+
+.options{
+    background-color: var(--light-purple);
+    padding: 1rem;
+}
+
+.configure{
+    width: 95%;
+    background-color: var(--white);
+    padding: 10px 20px;
+    border: var(--gray) 2px solid;
+    margin: 10px 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: Roboto;
+    text-decoration: none;
+    color: var(--black);
+}
+
+.configure:hover{
+    background-color: var(--gray);
+    cursor: pointer;
+}
+
+#select:hover{
+    background-color: var(--white);
+    cursor: default;
+}
+
+.configure select:hover{
+    cursor: pointer;
+}
