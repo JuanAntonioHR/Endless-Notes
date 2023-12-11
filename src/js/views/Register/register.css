@@ -1,5 +1,5 @@
-.form-container-sq,
-.form-card-sq,
+.form-container,
+.form-card,
 .icon {
   display: flex;
   flex-direction: column;
@@ -7,13 +7,13 @@
   align-items: center;
 }
 
-.form-container-sq {
+.form-container {
   padding-top: 2rem;
   padding-bottom: calc(1rem * 0.5);
   flex-grow: 1;
 }
 
-.form-card-sq {
+.form-card {
   width: 20rem;
   height: 100%;
   padding: 2rem;
@@ -26,7 +26,7 @@
   width: 10rem;
 }
 
-.security-message-sq {
+.security-message {
   font-family: Roboto;
   color: var(--solid-gray);
   font-size: calc(1rem * 0.9);
@@ -34,15 +34,15 @@
   margin-bottom: calc(1rem * 1.5);
 }
 
-.text-field-sq,
-.form-button-sq {
+.text-field,
+.form-button {
   height: auto;
   width: 100%;
   padding-top: calc(1rem * 0.5);
   padding-bottom: calc(1rem * 0.5);
 }
 
-.text-field-sq input {
+.text-field input {
   width: 98%;
   height: calc(1rem * 2.4);
   padding-left: calc(1rem * 0.5);
@@ -55,11 +55,11 @@
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.text-field-sq input::placeholder {
+.text-field input::placeholder {
   color: var(--solid-gray);
 }
 
-.form-button-sq button {
+.form-button button {
   width: 100%;
   height: calc(1rem * 2.4);
   padding: calc(1rem * 0.5);
@@ -82,10 +82,10 @@
   cursor: pointer;
 }
 
-.foot-banner-sq {
+.foot-banner {
   flex-shrink: 0;
 }
 
-.foot-banner-sq img {
+.foot-banner img {
   width: 100%;
 }
