@@ -1,5 +1,6 @@
 import React from 'react';
 import icon from '../../../../assets/images/endless-notes-icon.png';
+import footBanner from '../../../../assets/images/foot_banner.svg';
 import './register.css';
 
 export default function Register(){
@@ -34,8 +35,10 @@ export default function Register(){
                         <div className="form-button">
                                     <button>Registrarse</button>
                         </div>
-
                     </div>
+                </div>
+                <div className="foot-banner">
+                    <img src={footBanner} alt="banner" />
                 </div>
              </div>
         );
