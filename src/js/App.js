@@ -4,7 +4,6 @@ import axios from "axios";
 // Views
 import Index from "./views/Index/Index";
 import Login from "./views/Login/Login";
-import Signup from "./views/Signup/Signup";
 import Home from "./views/Home/Home";
 import Profile from "./views/Profile/Profile";
 import Register from "./views/Register/Register";
