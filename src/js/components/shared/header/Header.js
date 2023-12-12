@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NotesContext } from '../../../App';
 import { Link } from "react-router-dom";
 import icon from '../../../../../assets/images/endless-notes-icon.png';
@@ -7,8 +7,12 @@ import navbar_extension from '../../../../../assets/images/navbar-extension.svg'
 import './header.css'
 
 export default function Header() {
-    const { user } = useContext(NotesContext);
+    const { user, bufferAudios } = useContext(NotesContext);
 
+    function generateAudios() {
+        electron.audioFileApi.sendAudioFile(bufferAudios)
+    };
+    
     return (
         <div className="header-section">
             <div className="icon-container">
@@ -18,6 +22,9 @@ export default function Header() {
             </div>
             <div className="navigation-container">
                 <div className="navigation-container-top">
+                    <button onClick={generateAudios} className="audio-generate">
+                        Generar audios
+                    </button>
                     <Link to="/profile" className="user-info-container">
                         <div className="user-info-name">
                             <p>Hola, <span>{user.nombre.split(' ')[0]}</span></p>

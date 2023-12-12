@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain, Notification } = require('electron')
 const path = require('path')
+const fs = require('fs')
+const util = require('util')
 
 const isDev = !app.isPackaged
 
@@ -35,6 +37,29 @@ app.whenReady().then(() => {
 
 ipcMain.on('notify', (_, message) => {
     new Notification({ title: 'Notification', body: message }).show()
+})
+
+ipcMain.on('save-audio', (_, bufferAudios) => {
+    // Recorre el array de audios en buffer
+    bufferAudios.forEach((bufferAudio) => {
+        // audioContent es un objeto con las propiedades data y type
+        const { data, type } = bufferAudio.audioContent;
+
+        // Especifica la ruta y el nombre del archivo de salida
+        const fullFilePath = path.join(__dirname, `./public/${bufferAudio.id}.mp3`);
+
+        // Convierte el Buffer de audio a un array de bytes
+        const audioBuffer = Buffer.from(data, type);
+
+        // Guarda el archivo en el sistema de archivos
+        fs.writeFile(fullFilePath, audioBuffer, (err) => {
+            if (err) {
+                console.error('Error al guardar el archivo:', err);
+            } else {
+                console.log('Archivo guardado correctamente:', fullFilePath);
+            }
+        });
+    });
 })
 
 ipcMain.on('app-quit', () => {

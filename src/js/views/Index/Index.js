@@ -5,7 +5,7 @@ export default function Index() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate("/register");
+    navigate("/home");
   }, [navigate]);
 
   return (

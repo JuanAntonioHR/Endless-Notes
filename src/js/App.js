@@ -37,34 +37,44 @@ export default function App() {
         "pregunta": "Color favorito"
     });
     const [notes, setNotes] = useState([]);
+    const [bufferAudios, setBufferAudios] = useState([])
     
     useEffect(() => {
         async function convertTextToMp3(id, text) {
             try {
-            id = 0;
-            text = "Hello world";
+                // Make a request to your server endpoint that utilizes `textToSpeech` library
+                const response = await axios.post("http://localhost:3000/api/text-to-speech", {
+                    text: text,
+                    voice: { languageCode: "es-US", ssmlGender: "NEUTRAL" },
+                    audioConfig: { audioEncoding: "MP3" },
+                });
 
-            // Assume `textToSpeech` library is used on the server side
-            // Make a request to your server endpoint that utilizes `textToSpeech` library
-            const response = await axios.post("http://localhost:3000/api/text-to-speech", {
-                text: text,
-                voice: { languageCode: "en-US", ssmlGender: "NEUTRAL" },
-                audioConfig: { audioEncoding: "MP3" },
-            });
+                // Handle the response, for example, play the audio or save it to a file
+                console.log(response.data);
 
-            // Handle the response, for example, play the audio or save it to a file
-            console.log(response.data);
+                // Generate a new audio element
+                const bufferAudioItem = {
+                    id: id,
+                    audioContent: response.data.audioContent
+                };
+
+                // Add the new audio element to the state
+                setBufferAudios((prevState) => [...prevState, bufferAudioItem]);
+
             } catch (error) {
             console.error(error);
             }
         }
 
-        // Call the function
-        convertTextToMp3();
-    }, []); // Ensure this effect runs only once when the component mounts
+        // Generate audio for each note
+        notes.forEach((note) => {
+            convertTextToMp3(note.id_nota, note.texto);
+        });
+
+    }, [notes]);
 
     return (
-        <NotesContext.Provider value={{ notes, setNotes, user, setUser, setNotification }}>
+        <NotesContext.Provider value={{ notes, setNotes, user, setUser, setNotification, bufferAudios }}>
             <Router>
                 <Routes>
                     <Route path="/" element={<Index />} />
