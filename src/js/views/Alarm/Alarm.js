@@ -7,8 +7,8 @@ import './alarm.css';
 export default function Alarm() {
   return (
     <div className="screen">
-      <div className="form-container">
-        <div className="form-card">
+      <div className="form-container-alarm">
+        <div className="form-card-alarm">
           <img src={bell} alt="icon" className="bell-icon" />
           <div className="alarm-content">
             <div className="time">
@@ -21,7 +21,7 @@ export default function Alarm() {
               ESTRUCTURA DE DATOS
             </p>
           </div>
-          <div className="form-button">
+          <div className="form-button-alarm">
             <button>Finalizar</button>
           </div>
         </div>

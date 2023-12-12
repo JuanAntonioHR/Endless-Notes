@@ -7,6 +7,7 @@ import Login from "./views/Login/Login";
 import Signup from "./views/Signup/Signup";
 import Home from "./views/Home/Home";
 import Profile from "./views/Profile/Profile";
+import Register from "./views/Register/Register";
 import SQuestion from "./views/SQuestion/SQuestion";
 import Alarm from "./views/Alarm/Alarm";
 import Board from "./views/Board/Board"
@@ -81,6 +82,7 @@ export default function App() {
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/register" element={<Register />} />
                     <Route path="/board" element={<Board />} />
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/squestion" element={<SQuestion />} />

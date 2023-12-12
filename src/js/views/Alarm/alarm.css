@@ -1,4 +1,4 @@
-.form-container {
+.form-container-alarm {
   height: 100%;
   padding: 1rem;
   display: flex;
@@ -7,7 +7,7 @@
 }
 
 /*Extenderlo horizontalmente*/
-.form-card {
+.form-card-alarm {
   width: 100%;
   height: 100%;
   padding: 2rem;
@@ -32,30 +32,30 @@
   color: var(--black);
 }
 
-.time {
+.alarm-content .time {
   text-align: center;
 }
 
-.time h1 {
+.alarm-content .time h1 {
   font-weight: 900;
   font-size: 80px;
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.alarm-text, .alarm-title {
+.alarm-content .alarm-text, .alarm-content .alarm-title {
   width: 90%;
   margin: 0 auto;
   font-size: 30px;
   text-align: center;
 }
 
-.alarm-title{
+.alarm-content .alarm-title{
   font-weight: 600;
   margin-bottom: calc(1rem * 0.5);
 }
 
-.form-button button {
+.form-button-alarm button {
   width: 35%;
   height: calc(1rem * 4.5);
   padding: 1rem;
@@ -64,15 +64,16 @@
   font-weight: 600;
   color: var(--white);
   border-radius: 12px;
+  background-color: var(--purple);
   box-shadow: 5.82px 7.761px 0px 0px var(--black);
 }
 
-.form-button {
+.form-button-alarm {
   display: flex;
   justify-content: center;
 }
 
-.form-button button:hover {
+.form-button-alarm button:hover {
   background-color: var(--black);
   box-shadow: 5.82px 7.761px 0px 0px var(--dark-purple);
   cursor: pointer;
