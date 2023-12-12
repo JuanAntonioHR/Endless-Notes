@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain, Notification } = require('electron')
 const path = require('path')
 const fs = require('fs')
-const util = require('util')
 
 const isDev = !app.isPackaged
 
