@@ -31,7 +31,7 @@ export default function App() {
         "id_usuario": 0,
         "nombre": "Juan Antonio Herrera de la Rosa",
         "correo": "juanin10toni@gmail.com",
-        "contrasena": "$2b$13$f7xS0hOYft6SuM5Wk3vkwOqX3xwXEKzB2LTpQ2eRgl93e/1CX74Yy",
+        "contrasena": "$2b$13$uGhHvXttcd4rLK0rH5ZmH.HzFmV9aFL8Q.YA1JuKfM7TZLmd24e0C",
         "respuesta": "Naranja",
         "pregunta": "Color favorito"
     });

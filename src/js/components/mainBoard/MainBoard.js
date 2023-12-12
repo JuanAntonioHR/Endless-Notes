@@ -15,7 +15,6 @@ export default function MainBoard() {
             const url = `http://localhost:3000/notas/${user.id_usuario}`;
             const response = await axios.get(url);
             setNotes(response.data.message);
-            assignNotes();
         } catch (error) {
             console.error('Error al obtener datos:', error);
             return null;
@@ -45,6 +44,7 @@ export default function MainBoard() {
     function assignNotes() {
         try {
             // Assuming `response.data` is your notes array
+            console.log('a')
 
             // Convert date strings to Date objects for comparison
             const noteDates = notes.map((note) => {
