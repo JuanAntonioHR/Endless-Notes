@@ -10,11 +10,9 @@ export default function MainBoard() {
     const [loading, setLoading] = useState(true);
     const { user, notes, setNotes } = useContext(NotesContext);
 
-    const id = 0;
-
     const fetchData = async () => {
         try {
-            const url = `http://localhost:3000/notas/${id}`;
+            const url = `http://localhost:3000/notas/${user.id_usuario}`;
             const response = await axios.get(url);
             setNotes(response.data.message);
             assignNotes();
@@ -47,11 +45,9 @@ export default function MainBoard() {
     function assignNotes() {
         try {
             // Assuming `response.data` is your notes array
-            const notex = notes;
-            console.log(notex)
 
             // Convert date strings to Date objects for comparison
-            const noteDates = notex.map((note) => {
+            const noteDates = notes.map((note) => {
                 const [datePart, timePart] = note.fecha.split('T');
                 const [year, month, day] = datePart.split('-').map(Number);
                 const [hour, minute, second] = timePart.slice(0, 8).split(':').map(Number);
@@ -66,9 +62,9 @@ export default function MainBoard() {
                 const sliceSize = i < 2 ? 2 : 3;
                 let notesDate = [];
                 if (i == 0) {
-                    notesDate = notex.filter((note, j) => noteDates[j] > new Date() && noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
+                    notesDate = notes.filter((note, j) => noteDates[j] > new Date() && noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
                 } else {
-                    notesDate = notex.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
+                    notesDate = notes.filter((note, j) => noteDates[j].getDate() === tempDates[i].getDate() && noteDates[j].getMonth() === tempDates[i].getMonth() && noteDates[j].getFullYear() === tempDates[i].getFullYear()).slice(0, sliceSize);
                 }
                 updatedNotesDates.push(notesDate);
             }

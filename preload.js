@@ -5,5 +5,11 @@ contextBridge.exposeInMainWorld('electron', {
         sendNotification(message) {
             ipcRenderer.send('notify', message);
         }
+    },
+
+    audioFileApi: {
+        sendAudioFile(bufferAudios) {
+            ipcRenderer.send('save-audio', bufferAudios);
+        }
     }
 });
