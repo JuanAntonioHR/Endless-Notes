@@ -22,7 +22,6 @@ export default function MainBoard() {
                     }
                 }
                 const response = await axios.get(`http://localhost:3000/notas/${user.id_usuario}`, headers);
-                console.log(response.data.message);
                 setNotes(response.data.message);
             } catch (error) {
                 console.error('Error al obtener datos:', error);
@@ -55,9 +54,6 @@ export default function MainBoard() {
 
     function assignNotes() {
         try {
-            // Assuming `response.data` is your notes array
-            console.log('a')
-
             // Convert date strings to Date objects for comparison
             const noteDates = notes.map((note) => {
                 const [datePart, timePart] = note.fecha.split('T');
