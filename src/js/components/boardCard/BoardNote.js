@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { NotesContext } from '../../App'
+import axios from 'axios'
 import trash_icon from '../../../../assets/images/trash-icon.svg'
 import './boardNote.css'
 
@@ -37,11 +38,14 @@ export default function BoardCard({ id, titulo, fecha }){
             </p>
             <button className='board-note-delete' onClick={() => {
                     if (window.confirm(`Estas seguro que quieres eliminar la nota ${titulo}?`)) {
-                        fetch(`http://localhost:3000/notas/${id}`, { method: 'DELETE' })
+                        const headers = {
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem("token")}`
+                            }
+                        }
+
+                        axios.delete(`http://localhost:3000/notas/${id}`, headers)
                             .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Network response was not ok');
-                                }
                                 // Modify notes array
                                 const newNotes = notes.filter((note) => note.id_nota !== id);
                                 setNotes(newNotes);
