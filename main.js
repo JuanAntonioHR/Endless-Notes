@@ -1,8 +1,13 @@
 const { app, BrowserWindow, ipcMain, Notification } = require('electron')
 const path = require('path')
 const fs = require('fs')
+const cron = require('node-cron');
+const sound = require("sound-play");
 
 const isDev = !app.isPackaged
+
+// Array para almacenar las tareas cron programadas
+const scheduledTasks = [];
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -60,6 +65,41 @@ ipcMain.on('save-audio', (_, bufferAudios) => {
         });
     });
 })
+
+function sendNotificationWithAudio(title, message, audioFileName) {
+    // Especifica la ruta y el nombre del archivo de salida
+    const fullFilePath = path.join(__dirname, `./public/${audioFileName}.mp3`);
+    
+    // Reproduce el archivo de audio
+    sound.play(fullFilePath).catch((error) => {
+        console.error('Error al reproducir el archivo de audio:', error);
+    });
+    
+    // Muestra la notificación
+    new Notification({ title, body: message }).show();
+}
+
+// Función para programar una tarea cron para una notificación específica
+function scheduleNotificationCron(notificationData) {
+    const { title, text, time, audioFileName } = notificationData;
+
+    const task = cron.schedule(time, () => {
+        sendNotificationWithAudio(title, text, audioFileName);
+    });
+
+    scheduledTasks.push(task);
+}
+
+ipcMain.on('schedule-notifications', (_, notificationsData) => {
+    // Recibe la información de las notificaciones desde el frontend
+    notificationsData.forEach((notificationData) => {
+        // Programa las tareas cron para cada notificación
+        scheduleNotificationCron(notificationData);
+    });
+
+    
+});
+
 
 ipcMain.on('app-quit', () => {
     app.quit();

@@ -1,16 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { NotesContext } from '../../../App';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import icon from '../../../../../assets/images/endless-notes-icon.png';
 import user_icon from '../../../../../assets/images/user-icon.svg';
 import navbar_extension from '../../../../../assets/images/navbar-extension.svg';
 import './header.css'
 
 export default function Header() {
-    const { user, bufferAudios } = useContext(NotesContext);
+    const navigate = useNavigate();
+    const { user, bufferAudios, notificationsData } = useContext(NotesContext);
 
     function generateAudios() {
         electron.audioFileApi.sendAudioFile(bufferAudios)
+        electron.notificationApi.sendNotificationWithAudio(notificationsData)
+        navigate("/home");
     };
     
     return (

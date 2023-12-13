@@ -48,6 +48,7 @@ export default function NewNote() {
                 setTexto('');
                 setDate('');
                 setTime('');
+                setRemaining(100);
             })
             .catch((error) => {
                 console.error('Error:', error);

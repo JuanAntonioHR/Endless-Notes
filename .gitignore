@@ -140,7 +140,8 @@ dist
 /build/js
 /build/js/.*
 
-# Optional stylelint cache
+# Public
+/public
 
 # SvelteKit build / generate output
 .svelte-kit

@@ -4,6 +4,9 @@ contextBridge.exposeInMainWorld('electron', {
     notificationApi: {
         sendNotification(message) {
             ipcRenderer.send('notify', message);
+        },
+        sendNotificationWithAudio(notificationsData) {
+            ipcRenderer.send('schedule-notifications', notificationsData);
         }
     },
 

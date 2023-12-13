@@ -6,7 +6,15 @@ import './setting.css'
 import Header from '../../components/shared/header/Header'
 
 export default function Setting() {
-    const { setNotification } = useContext(NotesContext);
+    const { setNotification, notification } = useContext(NotesContext);
+
+    const handleNotification = (e) => {
+        if (e.target.value === 'true') {
+            setNotification(true)
+        } else {
+            setNotification(false)
+        }
+    }
 
     return (
         <div className="screen">
@@ -18,7 +26,7 @@ export default function Setting() {
                             <Link to='/squestion' className="configure">Cambiar pregunta de seguridad</Link>
                             <div className="configure" id='select'>
                                 Notificaciones 
-                                <select onChange={(e) => setNotification(e.target.value)}>
+                                <select onChange={(e) => handleNotification(e)} value={notification}>
                                     <option value="true">Activadas</option>
                                     <option value="false">Desactivadas</option>
                                 </select>

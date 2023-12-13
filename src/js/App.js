@@ -27,6 +27,7 @@ export const NotesContext = createContext();
 
 export default function App() {
     const [notification, setNotification] = useState(true)
+    const [notificationsData, setNotificationsData] = useState([])
     const [user, setUser] = useState({
         "id_usuario": 0,
         "nombre": "Juan Antonio Herrera de la Rosa",
@@ -39,7 +40,7 @@ export default function App() {
     const [bufferAudios, setBufferAudios] = useState([])
     
     useEffect(() => {
-        async function convertTextToMp3(id, text) {
+        async function convertTextToMp3(id, title, text, date) {
             try {
                 // Make a request to your server endpoint that utilizes `textToSpeech` library
                 const response = await axios.post("http://localhost:3000/api/text-to-speech", {
@@ -60,6 +61,22 @@ export default function App() {
                 // Add the new audio element to the state
                 setBufferAudios((prevState) => [...prevState, bufferAudioItem]);
 
+                // Parse the date to node cron format
+                const [datePart, timePart] = date.split('T');
+                const [year, month, day] = datePart.split('-').map(Number);
+                const [hour, minute, second] = timePart.slice(0, 8).split(':').map(Number);
+
+                const cronExpression = `${minute} ${hour} ${day} ${month} *`;
+
+                // Add elements to notificationsData array
+                setNotificationsData((prevState) => [...prevState, {
+                    title: title,
+                    // Only the first 15 characters of the text
+                    text: text.substring(0, 30) + '...',
+                    time: cronExpression,
+                    audioFileName: id
+                }]);
+
             } catch (error) {
             console.error(error);
             }
@@ -67,13 +84,13 @@ export default function App() {
 
         // Generate audio for each note
         notes.forEach((note) => {
-            convertTextToMp3(note.id_nota, note.texto);
+            convertTextToMp3(note.id_nota, note.titulo, note.texto, note.fecha);
         });
 
     }, [notes]);
 
     return (
-        <NotesContext.Provider value={{ notes, setNotes, user, setUser, setNotification, bufferAudios }}>
+        <NotesContext.Provider value={{ notes, setNotes, user, setUser, notification, setNotification, bufferAudios, notificationsData }}>
             <Router>
                 <Routes>
                     <Route path="/" element={<Index />} />
