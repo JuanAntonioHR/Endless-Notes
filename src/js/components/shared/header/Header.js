@@ -39,7 +39,7 @@ export default function Header() {
             <div className="navigation-container">
                 <div className="navigation-container-top">
                     <button onClick={generateAudios} className="audio-generate">
-                        Generar audios
+                        Generar notificaciones
                     </button>
                     <Link to="/profile" className="user-info-container">
                         <div className="user-info-name">
