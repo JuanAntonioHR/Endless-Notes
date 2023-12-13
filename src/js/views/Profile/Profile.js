@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { NotesContext } from '../../App';
+import axios from 'axios';
 import Header from '../../components/shared/header/Header'
 import './profile.css'
 
@@ -71,38 +72,29 @@ export default function Profile() {
     function handleDelete() {
         if (window.confirm('¿Estás seguro de que quieres eliminar tu cuenta y todas tus notas? Esta acción no se puede deshacer')) {
             // Borramos todas las notas del usuario
-            fetch(`http://localhost:3000/notas/user/${user.id_usuario}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data.code === 200) {
+            const headers = {
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+            }
 
-                    // Borramos al usuario
-                    fetch(`http://localhost:3000/user/${user.id_usuario}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.code === 200) {
+            axios.delete(`http://localhost:3000/notas/user/${user.id_usuario}`, headers)
+                .then(response => {
+                    console.log(response.data);
 
-                            // Borramos el token
-                            alert(data.message);
-                            localStorage.removeItem('token');
-                            navigate('/login');
-                        }
-                    })
-                }
-            })
-            .catch(error => console.error(error));
+                    if (response.data.code === 200) {
+                        axios.delete(`http://localhost:3000/user/${user.id_usuario}`, headers)
+                            .then(response => {
+                                console.log(response.data);
+                                
+                                if (response.data.code === 200) {
+                                    alert(response.data.message);
+                                    localStorage.removeItem('token');
+                                    navigate('/login');
+                                }
+                            })
+                            .catch(error => console.error(error));
+                    }
+                })
+                .catch(error => console.error(error));
         }
     }
 
