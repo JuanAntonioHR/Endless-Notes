@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import icon from '../../../../assets/images/endless-notes-icon.png';
 import footBanner from '../../../../assets/images/foot_banner.svg';
 import './register.css';
@@ -54,6 +54,13 @@ export default function Register(){
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate("/home");
+        }
+    }, []);
 
     return(
             <div className= "screen">

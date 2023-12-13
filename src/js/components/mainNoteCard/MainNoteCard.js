@@ -36,8 +36,14 @@ export default function MainNoteCard({ fecha, titulo, texto, id }) {
             </div>
             <div className="notes-button">
                 <button onClick={() => {
-                    if (window.confirm(`Estas seguro que quieres eliminar la nota ${titulo}?`)) {
-                        fetch(`http://localhost:3000/notas/${id}`, { method: 'DELETE' })
+                    if (window.confirm(`Estas seguro que quieres eliminar la nota: ${titulo}?`)) {
+                        const headers = {
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem("token")}`
+                            }
+                        }
+                        
+                        fetch(`http://localhost:3000/notas/${id}`, { method: 'DELETE', headers })
                             .then(response => {
                                 if (!response.ok) {
                                     throw new Error('Network response was not ok');

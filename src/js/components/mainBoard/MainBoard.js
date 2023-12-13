@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NotesContext } from '../../App';
 import axios from 'axios';
 import './mainBoard.css'
@@ -6,18 +7,29 @@ import './mainBoard.css'
 import NotesContainer from '../notesContainer/NotesContainer';
 
 export default function MainBoard() {
+    const navigate = useNavigate();
+
     const [notesDates, setNotesDates] = useState([]);
     const [loading, setLoading] = useState(true);
     const { user, notes, setNotes } = useContext(NotesContext);
 
     const fetchData = async () => {
-        try {
-            const url = `http://localhost:3000/notas/${user.id_usuario}`;
-            const response = await axios.get(url);
-            setNotes(response.data.message);
-        } catch (error) {
-            console.error('Error al obtener datos:', error);
-            return null;
+        if(localStorage.getItem("token")) {
+            try {
+                const headers = {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+                const response = await axios.get(`http://localhost:3000/notas/${user.id_usuario}`, headers);
+                console.log(response.data.message);
+                setNotes(response.data.message);
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+                return null;
+            }
+        } else {
+            navigate("/login");
         }
     };
 

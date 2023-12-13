@@ -40,8 +40,14 @@ export default function NextNotesContainer({ date, notes }) {
                                     </div>
                                     <div className="next-notes-button">
                                         <button onClick={() => {
-                                            if (window.confirm('Are you sure you want to delete this note?')) {
-                                                fetch(`http://localhost:3000/notas/${nota.id_nota}`, { method: 'DELETE' })
+                                            if (window.confirm(`Estas seguro que quieres eliminar la nota: ${nota.titulo}?`)) {
+                                                const headers = {
+                                                    headers: {
+                                                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                                                    }
+                                                }
+
+                                                fetch(`http://localhost:3000/notas/${nota.id_nota}`, { method: 'DELETE', headers })
                                                     .then(response => {
                                                         if (!response.ok) {
                                                             throw new Error('Network response was not ok');

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NotesContext } from '../../../App';
 import { Link, useNavigate } from "react-router-dom";
 import icon from '../../../../../assets/images/endless-notes-icon.png';
@@ -15,6 +15,19 @@ export default function Header() {
         electron.notificationApi.sendNotificationWithAudio(notificationsData)
         navigate("/home");
     };
+
+    function handleLogout() {
+        // Borrar token del localStorage
+        localStorage.removeItem('token');
+        // Redirigir a la página de inicio de sesión
+        navigate("/login");
+    }
+
+    useEffect(() => {
+        if(!localStorage.getItem('token')) {
+            navigate("/login");
+        }
+    }, []);
     
     return (
         <div className="header-section">
@@ -44,7 +57,9 @@ export default function Header() {
                     <div className="navbar">
                         <ul>
                             <li>
-                                <Link to="/login" className="navbar-item">Cerrar sesión</Link>
+                                <button onClick={handleLogout} className="navbar-item">
+                                    Cerrar sesión
+                                </button>
                             </li>
                             <li>
                                 <Link to="/setting" className="navbar-item">Configuración</Link>

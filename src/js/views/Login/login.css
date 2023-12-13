@@ -110,8 +110,10 @@
 }
 
 .tiny-link {
+    text-decoration: underline;
     color: var(--solid-gray);
     font-size: calc(1rem * 0.9);
+    background: none;
 }
 
 .tiny-link:hover {

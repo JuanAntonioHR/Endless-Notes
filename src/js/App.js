@@ -33,8 +33,8 @@ export default function App() {
         "nombre": "Juan Antonio Herrera de la Rosa",
         "correo": "juanin10toni@gmail.com",
         "contrasena": "$2b$13$uGhHvXttcd4rLK0rH5ZmH.HzFmV9aFL8Q.YA1JuKfM7TZLmd24e0C",
-        "respuesta": "Naranja",
-        "pregunta": "Color favorito"
+        "respuesta": null,
+        "pregunta": null
     });
     const [notes, setNotes] = useState([]);
     const [bufferAudios, setBufferAudios] = useState([])
@@ -42,12 +42,18 @@ export default function App() {
     useEffect(() => {
         async function convertTextToMp3(id, title, text, date) {
             try {
+                const headers = {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+                
                 // Make a request to your server endpoint that utilizes `textToSpeech` library
                 const response = await axios.post("http://localhost:3000/api/text-to-speech", {
                     text: text,
                     voice: { languageCode: "es-US", ssmlGender: "NEUTRAL" },
                     audioConfig: { audioEncoding: "MP3" },
-                });
+                }, headers);
 
                 // Handle the response, for example, play the audio or save it to a file
                 console.log(response.data);
@@ -78,7 +84,7 @@ export default function App() {
                 }]);
 
             } catch (error) {
-            console.error(error);
+                console.error(error);
             }
         }
 

@@ -107,10 +107,12 @@
     padding: calc(1rem * 0.7);
     display: block;
     text-align: center;
+    background: none;
 }
 
 .navbar-item:hover{
     font-weight: 800;
     background-color: var(--solid-gray);
     color: var(--black);
+    cursor: pointer;
 }
