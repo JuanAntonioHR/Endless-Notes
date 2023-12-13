@@ -8,7 +8,8 @@ import './profile.css'
 export default function Profile() {
     const navigate = useNavigate();
 
-    const { user, setUser } = useContext(NotesContext);
+    const { setUser } = useContext(NotesContext);
+    const user = JSON.parse(localStorage.getItem('user'));
     const [newEmail, setNewEmail] = useState('');
     const [newName, setNewName] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -21,48 +22,67 @@ export default function Profile() {
             }
 
             console.log(user.correo, user.nombre, user.contrasena);
+            console.log(newEmail, newName, newPassword);
     
-            const response = await fetch(`http://localhost:3000/user/${user.id_usuario}`, {
-                method: 'PUT',
+            // const response = await fetch(`http://localhost:3000/user/${user.id_usuario}`, {
+            //     method: 'PUT',
+            //     headers: {
+            //         Authorization: `Bearer ${localStorage.getItem("token")}`
+            //     },
+            //     body: JSON.stringify({
+            //         // if newEmail is undefined, use the old email
+            //         correo: newEmail ? newEmail : user.correo,
+            //         // if newName is empty, use the old name
+            //         nombre: newName ? newName : user.nombre,
+            //         // if newPassword is empty, use the old password
+            //         contrasena: newPassword ? newPassword : user.contrasena
+            //     })
+            // });
+
+            const headers = {
                 headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    correo: newEmail || user.correo,
-                    nombre: newName || user.nombre,
-                    contrasena: newPassword || user.contrasena
-                })
-            });
-    
-            const data = await response.json();
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            }
+
+            const response = await axios.put(`http://localhost:3000/user/${user.id_usuario}`, {
+                correo: newEmail ? newEmail : user.correo,
+                nombre: newName ? newName : user.nombre,
+                contrasena: newPassword ? newPassword : user.contrasena
+            }, headers);
+
+            const data = await response.data;
             console.log(data);
 
             if (data.code === 200) {
                 alert(data.message);
 
                 if (newEmail) {
-                    setUser({
+                    // Actualizamos el user en localStorage
+                    localStorage.setItem('user', JSON.stringify({
                         ...user,
                         correo: newEmail
-                    });
+                    }));
                 }
                 if (newName) {
-                    setUser({
+                    // Actualizamos el user en localStorage
+                    localStorage.setItem('user', JSON.stringify({
                         ...user,
                         nombre: newName
-                    });
+                    }));
                 }
                 if (newPassword) {
-                    setUser({
+                    // Actualizamos el user en localStorage
+                    localStorage.setItem('user', JSON.stringify({
                         ...user,
                         contrasena: newPassword
-                    });
+                    }));
                 }
-
-                setNewEmail('');
-                setNewName('');
-                setNewPassword('');
             }
+            
+            setNewEmail('');
+            setNewName('');
+            setNewPassword('');
             
         } catch (error) {
             console.error(error);

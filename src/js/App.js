@@ -28,14 +28,7 @@ export const NotesContext = createContext();
 export default function App() {
     const [notification, setNotification] = useState(true)
     const [notificationsData, setNotificationsData] = useState([])
-    const [user, setUser] = useState({
-        "id_usuario": 0,
-        "nombre": "Juan Antonio Herrera de la Rosa",
-        "correo": "juanin10toni@gmail.com",
-        "contrasena": "$2b$13$uGhHvXttcd4rLK0rH5ZmH.HzFmV9aFL8Q.YA1JuKfM7TZLmd24e0C",
-        "respuesta": null,
-        "pregunta": null
-    });
+    const [user, setUser] = useState({});
     const [notes, setNotes] = useState([]);
     const [bufferAudios, setBufferAudios] = useState([])
     

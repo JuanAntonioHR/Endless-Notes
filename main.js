@@ -3,11 +3,13 @@ const path = require('path')
 const fs = require('fs')
 const cron = require('node-cron');
 const sound = require("sound-play");
-
 const isDev = !app.isPackaged
 
 // Array para almacenar las tareas cron programadas
 const scheduledTasks = [];
+
+// Iconos de la aplicación
+const dockIcon = path.join(__dirname, 'assets', 'images', 'endless-notes-icon.png');
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -32,6 +34,10 @@ if (isDev) {
     require('electron-reload')(__dirname, {
         electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
     })
+}
+
+if (process.platform === 'darwin') {
+    app.dock.setIcon(dockIcon);
 }
 
 app.whenReady().then(() => {

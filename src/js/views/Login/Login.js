@@ -8,6 +8,7 @@ import './login.css';
 export default function Login() {
   const navigate = useNavigate();
   const { setUser } = useContext(NotesContext);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -42,7 +43,10 @@ export default function Login() {
 
       if (data.code === 200) {
         setUser(data.user);
+        console.log(data.user)
+        console.log(user)
         localStorage.setItem('token', data.message);
+        localStorage.setItem('user', JSON.stringify(data.user));
         navigate("/home");
       } else {
         alert(data.message);

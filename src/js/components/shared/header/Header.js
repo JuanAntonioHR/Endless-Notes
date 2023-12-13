@@ -8,7 +8,8 @@ import './header.css'
 
 export default function Header() {
     const navigate = useNavigate();
-    const { user, bufferAudios, notificationsData } = useContext(NotesContext);
+    const { bufferAudios, notificationsData } = useContext(NotesContext);
+    const user = JSON.parse(localStorage.getItem('user'));
 
     function generateAudios() {
         electron.audioFileApi.sendAudioFile(bufferAudios)

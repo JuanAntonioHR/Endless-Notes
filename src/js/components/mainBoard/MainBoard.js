@@ -11,11 +11,13 @@ export default function MainBoard() {
 
     const [notesDates, setNotesDates] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { user, notes, setNotes } = useContext(NotesContext);
+    const { notes, setNotes } = useContext(NotesContext);
+    const user = JSON.parse(localStorage.getItem('user'));
 
     const fetchData = async () => {
         if(localStorage.getItem("token")) {
             try {
+
                 const headers = {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
