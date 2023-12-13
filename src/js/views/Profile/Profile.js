@@ -1,9 +1,12 @@
 import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { NotesContext } from '../../App';
 import Header from '../../components/shared/header/Header'
 import './profile.css'
 
 export default function Profile() {
+    const navigate = useNavigate();
+
     const { user, setUser } = useContext(NotesContext);
     const [newEmail, setNewEmail] = useState('');
     const [newName, setNewName] = useState('');
@@ -65,6 +68,44 @@ export default function Profile() {
         }
     }
 
+    function handleDelete() {
+        if (window.confirm('¿Estás seguro de que quieres eliminar tu cuenta y todas tus notas? Esta acción no se puede deshacer')) {
+            // Borramos todas las notas del usuario
+            fetch(`http://localhost:3000/notas/user/${user.id_usuario}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.code === 200) {
+
+                    // Borramos al usuario
+                    fetch(`http://localhost:3000/user/${user.id_usuario}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.code === 200) {
+
+                            // Borramos el token
+                            alert(data.message);
+                            localStorage.removeItem('token');
+                            navigate('/login');
+                        }
+                    })
+                }
+            })
+            .catch(error => console.error(error));
+        }
+    }
+
     return (
         <div className="screen">
             <Header />
@@ -91,7 +132,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="eliminar">
-                        <button>Eliminar cuenta</button>
+                        <button onClick={handleDelete}>Eliminar cuenta</button>
                     </div>
                 </div>
             </div>
