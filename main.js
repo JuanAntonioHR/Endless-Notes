@@ -43,7 +43,37 @@ ipcMain.on('notify', (_, message) => {
     new Notification({ title: 'Notification', body: message }).show()
 })
 
+// Función para borrar todo el contenido de la carpeta "public"
+function deletePublicFolderContent() {
+    const publicFolderPath = path.join(__dirname, './public');
+
+    // Lee el contenido de la carpeta
+    fs.readdir(publicFolderPath, (err, files) => {
+        if (err) {
+            console.error('Error al leer el contenido de la carpeta:', err);
+            return;
+        }
+
+        // Itera sobre los archivos y borra cada uno
+        files.forEach((file) => {
+            const filePath = path.join(publicFolderPath, file);
+
+            // Borra el archivo
+            fs.unlink(filePath, (unlinkErr) => {
+                if (unlinkErr) {
+                    console.error('Error al borrar el archivo:', unlinkErr);
+                } else {
+                    console.log('Archivo borrado correctamente:', filePath);
+                }
+            });
+        });
+    });
+}
+
 ipcMain.on('save-audio', (_, bufferAudios) => {
+    // Borra el contenido de la carpeta "public"
+    deletePublicFolderContent();
+    
     // Recorre el array de audios en buffer
     bufferAudios.forEach((bufferAudio) => {
         // audioContent es un objeto con las propiedades data y type
@@ -96,8 +126,6 @@ ipcMain.on('schedule-notifications', (_, notificationsData) => {
         // Programa las tareas cron para cada notificación
         scheduleNotificationCron(notificationData);
     });
-
-    
 });
 
 

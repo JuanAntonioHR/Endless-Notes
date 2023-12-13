@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { NotesContext } from '../../App'
+import axios from 'axios';
 import './mainNoteCard.css'
 
 export default function MainNoteCard({ fecha, titulo, texto, id }) {
@@ -43,11 +44,8 @@ export default function MainNoteCard({ fecha, titulo, texto, id }) {
                             }
                         }
                         
-                        fetch(`http://localhost:3000/notas/${id}`, { method: 'DELETE', headers })
+                        axios.delete(`http://localhost:3000/notas/${id}`, headers)
                             .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Network response was not ok');
-                                }
                                 // Modify notes array
                                 const newNotes = notes.filter((note) => note.id_nota !== id);
                                 setNotes(newNotes);

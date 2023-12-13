@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { NotesContext } from '../../App'
+import axios from 'axios';
 import delete_icon from '../../../../assets/images/delete.svg';
 import './nextNotesContainer.css'
 
-export default function NextNotesContainer({ date, notes }) {
+export default function NextNotesContainer({ date, notex }) {
+    const { notes, setNotes } = useContext(NotesContext);
+
     return(
         <div className="next-notes-container">
             <div className="next-notes-title">
@@ -11,7 +15,7 @@ export default function NextNotesContainer({ date, notes }) {
             <div className="next-notes-card">
                 <ul>
                     {
-                        notes.map((nota) => {
+                        notex.map((nota) => {
                             //formato de var fecha: 2023-11-25T16:00:00.000Z
                             //Sacar solo la hora
                             let time = nota.fecha.split("T");
@@ -47,17 +51,16 @@ export default function NextNotesContainer({ date, notes }) {
                                                     }
                                                 }
 
-                                                fetch(`http://localhost:3000/notas/${nota.id_nota}`, { method: 'DELETE', headers })
+                                                axios.delete(`http://localhost:3000/notas/${nota.id_nota}`, headers)
                                                     .then(response => {
-                                                        if (!response.ok) {
-                                                            throw new Error('Network response was not ok');
-                                                        }
-                                                        // Reload the page after successful deletion
-                                                        window.location.reload();
+                                                        // Modify notes array
+                                                        const newNotes = notes.filter((note) => note.id_nota !== nota.id_nota);
+                                                        setNotes(newNotes);
                                                     })
                                                     .catch(error => {
                                                         console.error('There has been a problem with your fetch operation:', error);
                                                     });
+
                                             }
                                         }}>
                                             <img src={delete_icon} alt="delete-icon" />

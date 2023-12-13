@@ -35,9 +35,9 @@ export default function NotesContainer({ notas, fecha, refFecha, color, notas1, 
                         })
                     ) : (
                         <div className="next-notes-section">
-                            <NextNotesContainer date={date1} notes={notas1}/>
-                            <NextNotesContainer date={date2} notes={notas2}/>
-                            <NextNotesContainer date={date3} notes={notas3}/>
+                            <NextNotesContainer date={date1} notex={notas1}/>
+                            <NextNotesContainer date={date2} notex={notas2}/>
+                            <NextNotesContainer date={date3} notex={notas3}/>
                         </div>
                     )
                 }
