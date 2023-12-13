@@ -13,6 +13,7 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 1300,
         height: 760,
+        resizable: false,  // Esto desactiva la capacidad de redimensionar la ventana
         backgroundColor: '#ffffff',
         webPreferences: {
             nodeIntegration: false,
@@ -20,6 +21,8 @@ function createWindow() {
             preload: path.join(__dirname, 'preload.js')
         }
     })
+
+    win.removeMenu();  // Esto oculta el menú de la aplicación
 
     win.loadFile('index.html')
     isDev && win.webContents.openDevTools()
@@ -73,7 +76,7 @@ function deletePublicFolderContent() {
 ipcMain.on('save-audio', (_, bufferAudios) => {
     // Borra el contenido de la carpeta "public"
     deletePublicFolderContent();
-    
+
     // Recorre el array de audios en buffer
     bufferAudios.forEach((bufferAudio) => {
         // audioContent es un objeto con las propiedades data y type
