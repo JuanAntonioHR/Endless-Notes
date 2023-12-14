@@ -20,6 +20,7 @@ export default function Header() {
     function handleLogout() {
         // Borrar token del localStorage
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         // Redirigir a la página de inicio de sesión
         navigate("/login");
     }

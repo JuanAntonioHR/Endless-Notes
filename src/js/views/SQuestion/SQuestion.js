@@ -10,7 +10,8 @@ export default function Login() {
 
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
-  const { user, setUser } = useContext(NotesContext);
+  const { setUser } = useContext(NotesContext);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,7 +24,10 @@ export default function Login() {
     try {
       const response = await fetch(`http://localhost:3000/user/security/${user.id_usuario}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
         body: JSON.stringify({
             pregunta: question,
             respuesta: answer

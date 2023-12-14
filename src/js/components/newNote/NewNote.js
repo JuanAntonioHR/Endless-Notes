@@ -8,7 +8,8 @@ export default function NewNote() {
     const [texto, setTexto] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
-    const { user, setNotes } = useContext(NotesContext);
+    const { setNotes } = useContext(NotesContext);
+    const user = JSON.parse(localStorage.getItem('user'));
 
     const id_usuario = user.id_usuario;
 
