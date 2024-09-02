@@ -1,4 +1,5 @@
 # Endless-Notes
+![image](https://github.com/user-attachments/assets/83374fcb-a9d2-416f-aaf1-d86b2a889910)
 An application to generate audio reminders through notes and AI
 
 ## Run
